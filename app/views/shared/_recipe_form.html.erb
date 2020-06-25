@@ -1,0 +1,48 @@
+<% provide(:title, "Post Recipe") %>
+<div id="post-recipe" >
+    <h1>Post Recipe/レシピの投稿</h1>
+    <div class="wrapper">
+    <%= nested_form_for(@recipe, url: recipes_path) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <fieldset>
+        <legend class="col-md-6">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control' %>
+
+          <%= f.label :about, "About Recipe/コメント" %>
+          <%= f.text_area :about, class: 'form-control' %>
+
+          <!-- <span class="picture">
+            <%= f.label :picture, "Main Image / メイン画像" %>
+            <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+          </span> -->
+          </legend>
+
+          <legend class="col-md-6">
+            <%= f.fields_for :ingredients do |i|%>
+                <%= i.label :ingre, "ingredient/原材料" %>
+                <%= i.text_field :ingre, class: 'form-control'%>
+                <%= i.label :amount, "amount / 分量" %>
+                <%= i.text_field :amount, class: 'form-control' %>
+                <%= i.link_to_remove "delete / 削除" %><br>
+            <% end %>
+            <%= f.link_to_add "add ingredient / 原材料の追加", :ingredients %><br><br>
+            </legend>
+
+            <legend class="col-md-8">
+              <%= f.fields_for :instructions do |e|%>
+                  <%= e.label :no, "instruction no./作り方順" %>
+                  <%= e.number_field :no, class: 'form-control'%>
+                  <%= e.label :how_to, "instruction / 作り方" %>
+                  <%= e.text_area :how_to, class: 'form-control' %>
+                  <%= e.link_to_remove "delete / 削除" %>
+            <% end %>
+              <%= f.link_to_add "add instruction / 工程の追加", :instructions %>
+              </legend>
+
+              <%= f.submit "Post/投稿する", class: "btn btn-primary" %>
+          <% end %>
+
+          </fieldset>
+          </div><!-- wrapper -->
+        </div><!-- #post-recipe -->

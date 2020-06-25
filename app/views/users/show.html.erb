@@ -1,8 +1,15 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="com-md-4">
-    <section class="user-info">
-      <h1><%= @user.name %></h1>
+    <section class="user_info">
+      <h1>
+        <%= @user.name %>
+      </h1>
     </section>
-  </aside>
-</div>
+   <% if @user.recipes.any? %>
+     <h3>Recipes (<%= @user.recipes.count %>)</h3>
+     <div class="recipe-content wrapper">
+         <div class="wrapper grid">
+           <%= render @recipes %>
+         </div>
+         <%= will_paginate @recipes %>
+        <% end %>
+      </div>

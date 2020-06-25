@@ -34,4 +34,11 @@ class ActionDispatch::IntegrationTest
                                           remember_me: remember_me } }
   end
 
+  def recipe_params
+    params.require(:recipe).permit(:title, :about, :picture, :_destroy,
+                              instructions_attributes: [:id, :no, :how_to, :_destroy],
+                              ingredients_attributes: [:id, :ingre, :amount, :_destroy]
+                            )
+  end
+
 end

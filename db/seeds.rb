@@ -15,3 +15,11 @@ User.create!(name:  "Example User",
                password:              password,
                password_confirmation: password)
 end
+
+users = User.order(:created_at).take(6)
+50.times do
+  title = "test test test test test"
+  about = "test test test test test test test test test test test test test test test test test test test test test"
+  users.each { |user| user.recipes.create!(title: title,
+                                            about: about) }
+end

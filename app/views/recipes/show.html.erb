@@ -1,0 +1,39 @@
+<% provide(:title, @recipe.title)%>
+
+  <h1 class="title"><%= @recipe.title %></h1>
+  <div class="row">
+    <div class="col-md-6">
+      <section class="information">
+        <p class="about"><%= @recipe.about %></p>
+        <p><%= link_to @recipe.user.name, @recipe.user %></p>
+      </section>
+    </div>
+    <div class="col-md-6">
+      <section class="information">
+        <h2 class="ingre-title">Ingredients / 材料</h2>
+        <% ingredients = @recipe.ingredients.all %>
+        <% ingredients.each do |ingre| %>
+          <ol class="ingredients">
+            <p class="ingre"><%= ingre.ingre %></p>
+            <p class="amount"><%= ingre.amount %></p>
+            <br>
+          </ol>
+        <% end %>
+      </section>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 instructions">
+    <% instructions = @recipe.instructions.all %>
+    <% i = 1%>
+    <% instructions.each do |inst| %>
+      <ol class="instructions">
+        <!-- <p><%= inst.no %></p> -->
+        <p><%= i %>
+        <p><%= inst.how_to %></p>
+        <br>
+        <% i += 1%>
+      </ol>
+    <% end %>
+  </div>
+</div>

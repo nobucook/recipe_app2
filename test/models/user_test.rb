@@ -78,4 +78,13 @@ end
    assert_not @user.authenticated?('')
  end
 
+ test "associated recies should be destroy" do
+   @user.save
+   @user.recipes.create!(title:"aaa",
+                          about: "bbb")
+    assert_difference "Recipe.count", -1 do
+      @user.destroy
+    end
+ end
+
 end

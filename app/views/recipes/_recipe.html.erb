@@ -1,0 +1,16 @@
+<ol id="recipe-<%= recipe.id %>" class="item">
+  <div class="content recipe">
+    <div class="recipe-detail">
+        <p class="recipe-title"><%= link_to  recipe.title , recipe_path(recipe) %></p>
+        <p class="recipe-about"><%= recipe.about.truncate(218)  %></p>
+        <p><span class="timestamp"></p>
+          <p>Posted <%= time_ago_in_words(recipe.created_at) %> ago.</p>
+        <span class="user"><%= link_to recipe.user.name, recipe.user %></span>
+          <% if current_user?(recipe.user) %>
+          <span class="delete"><%= link_to "delete", recipe, method: :delete,
+                                         data: { confirm: "You sure?" } %><span>
+          <% end %>
+        </span>
+    </div>
+</div>
+</ol>

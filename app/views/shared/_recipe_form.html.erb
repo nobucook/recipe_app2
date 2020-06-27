@@ -2,7 +2,7 @@
 <div id="post-recipe" >
     <h1>Post Recipe/レシピの投稿</h1>
     <div class="wrapper">
-    <%= nested_form_for(@recipe, url: recipes_path) do |f| %>
+    <%= form_with model: @recipe,local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <fieldset>
         <legend class="col-md-6">
@@ -17,32 +17,27 @@
             <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
           </span> -->
           </legend>
-
-          <legend class="col-md-6">
-            <%= f.fields_for :ingredients do |i|%>
-                <%= i.label :ingre, "ingredient/原材料" %>
-                <%= i.text_field :ingre, class: 'form-control'%>
-                <%= i.label :amount, "amount / 分量" %>
-                <%= i.text_field :amount, class: 'form-control' %>
-                <%= i.link_to_remove "delete / 削除" %><br>
+          </fieldset>
+          <fieldset>
+            <legend>Ingredients</legend>
+            <%= f.fields_for :ingredients do |ingredients_form| %>
+              <%= render "shared/ingredient_fields", f: ingredients_form %>
             <% end %>
-            <%= f.link_to_add "add ingredient / 原材料の追加", :ingredients %><br><br>
-            </legend>
+            <%= link_to_add_fields "Add Ingredients / 原材料の追加", f, :ingredients %>
+          </fieldset>
 
-            <legend class="col-md-8">
-              <%= f.fields_for :instructions do |e|%>
-                  <%= e.label :no, "instruction no./作り方順" %>
-                  <%= e.number_field :no, class: 'form-control'%>
-                  <%= e.label :how_to, "instruction / 作り方" %>
-                  <%= e.text_area :how_to, class: 'form-control' %>
-                  <%= e.link_to_remove "delete / 削除" %>
-            <% end %>
-              <%= f.link_to_add "add instruction / 工程の追加", :instructions %>
-              </legend>
+
+          <fieldset>
+            <legend>Instructions</legend>
+              <%= f.fields_for :instructions do |instructions_form|%>
+                <%= render "shared/instruction_fields", f: instructions_form %>
+              <% end %>
+              <%= link_to_add_fields "Add Instruction / 工程追加", f, :instructions %>
+          </fieldset>
 
               <%= f.submit "Post/投稿する", class: "btn btn-primary" %>
           <% end %>
 
-          </fieldset>
+
           </div><!-- wrapper -->
         </div><!-- #post-recipe -->

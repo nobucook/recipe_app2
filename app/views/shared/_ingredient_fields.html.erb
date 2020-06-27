@@ -1,0 +1,14 @@
+<div class="nested-fields col-md-6">
+  <%= f.hidden_field :_destroy %>
+  <div>
+    <%= f.label :ingre, "ingredient/原材料" %>
+    <%= f.text_field :ingre, class: 'form-control'%>
+  </div>
+  <div>
+      <%= f.label :amount, "amount / 分量" %>
+      <%= f.text_field :amount, class: 'form-control' %>
+  </div>
+  <div>
+    <%= link_to "Remove", "#", class: "remove_fields" %>
+  </div>
+</div>

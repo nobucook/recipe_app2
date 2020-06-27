@@ -1,0 +1,14 @@
+<div class="nested-fields col-md-8">
+  <%= f.hidden_field :_destroy %>
+  <div>
+    <%= f.label :no, "instruction no./作り方順" %>
+    <%= f.text_field :no, class: 'form-control'%>
+  </div>
+  <div>
+      <%= f.label :how_to, "instruction / 作り方" %>
+      <%= f.text_field :how_to, class: 'form-control' %>
+  </div>
+  <div>
+    <%= link_to "Remove", "#", class: "remove_fields" %>
+  </div>
+</div>

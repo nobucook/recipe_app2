@@ -5,10 +5,11 @@
         <p class="recipe-about"><%= recipe.about.truncate(218)  %></p>
         <p><span class="timestamp"></p>
           <p>Posted <%= time_ago_in_words(recipe.created_at) %> ago.</p>
-        <span class="user"><%= link_to recipe.user.name, recipe.user %></span>
+        <p class="user"><%= link_to recipe.user.name, recipe.user %></p>
           <% if current_user?(recipe.user) %>
-          <span class="delete"><%= link_to "delete", recipe, method: :delete,
-                                         data: { confirm: "You sure?" } %><span>
+          <p class="delete"><%= link_to "Delete", recipe, method: :delete,
+                                         data: { confirm: "You sure?" } %></p>
+          <p><%= link_to "Edit", edit_recipe_path(recipe) %></p>
           <% end %>
         </span>
     </div>

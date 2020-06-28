@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
-  before_action :correct_user, only: :destroy
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @recipes = Recipe.all.paginate(page: params[:page])
@@ -25,6 +25,21 @@ class RecipesController < ApplicationController
       redirect_to recipes_url
     else
       render 'recipes/new'
+    end
+  end
+
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      flash[:success] = "Recipe updated / 更新に成功しました。"
+      redirect_to @recipe
+      #更新に成功した場合に扱う
+    else
+      render 'edit'
     end
   end
 

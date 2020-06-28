@@ -1,6 +1,10 @@
 <% provide(:title, @recipe.title)%>
 
   <h1 class="title"><%= @recipe.title %></h1>
+  <% if current_user?(@recipe.user) %>
+    <p><%= link_to "Edit", edit_recipe_path(@recipe) %></p>
+  <% end %>
+
   <div class="row">
     <div class="col-md-6">
       <section class="information">

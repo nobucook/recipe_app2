@@ -59,7 +59,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     assert_match title, response.body
     assert_match about, response.body
 
-    first_recipe = @user.recipes.paginate(page: 1).first
+    @recipe = @user.recipes.paginate(page: 1).first
 
     get user_path(@user)
     assert_match title, response.body
@@ -68,23 +68,54 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
 
 
     #投稿したレシピページの確認
-    get recipe_path(first_recipe)
+    get recipe_path(@recipe)
     assert_match title, response.body
     assert_match about, response.body
     assert_match ingre, response.body
     assert_match amount, response.body
     assert_match no.to_s, response.body
     assert_match how_to, response.body
+    assert_select 'p', text: 'Edit'
+
+    #レシピの編集
+    get edit_recipe_path(@recipe)
+    assert_template 'recipes/edit'
+    title = "una-don"
+    about = "unagi"
+    ingre = "ingre2"
+    amount = "amount2"
+    how_to = "how_to2"
+    no = 1
+    patch recipe_path(@recipe), params: {recipe: {
+                                 title: title,
+                                 about: about,
+                                 ingredients_attributes: {
+                                  '0': {ingre: ingre, amount: amount}
+                                },
+                                instructions_attributes: {
+                                  '0': {no: no, how_to: how_to}
+                                }
+                                  }
+                                }
+
+    assert_not flash.empty?
+    assert_redirected_to @recipe
+    @recipe.reload
+    assert_equal title,  @recipe.title
+    assert_equal about, @recipe.about
+
+
+
 
     # 投稿を削除する
     get recipes_url
-    assert_select 'a', text: 'delete'
+    assert_select 'p', text: 'Delete'
     assert_difference 'Recipe.count', -1 do
-      delete recipe_path(first_recipe)
+      delete recipe_path(@recipe)
     end
 
     # 違うユーザーのプロフィールにアクセス（削除リンクがないことを確認）
     get user_path(users(:archer))
-    assert_select 'a', text: 'delete', count: 0
+    assert_select 'p', text: 'Delete', count: 0
   end
 end

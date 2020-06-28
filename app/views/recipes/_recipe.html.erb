@@ -3,6 +3,7 @@
     <div class="recipe-detail">
         <p class="recipe-title"><%= link_to  recipe.title , recipe_path(recipe) %></p>
         <p class="recipe-about"><%= recipe.about.truncate(218)  %></p>
+        <%= image_tag recipe.display_image_200 if recipe.image.attached? %>
         <p><span class="timestamp"></p>
           <p>Posted <%= time_ago_in_words(recipe.created_at) %> ago.</p>
         <p class="user"><%= link_to recipe.user.name, recipe.user %></p>

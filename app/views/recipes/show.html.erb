@@ -8,6 +8,7 @@
   <div class="row">
     <div class="col-md-6">
       <section class="information">
+        <%= image_tag @recipe.display_image_400 if @recipe.image.attached? %>
         <p class="about"><%= @recipe.about %></p>
         <p><%= link_to @recipe.user.name, @recipe.user %></p>
       </section>

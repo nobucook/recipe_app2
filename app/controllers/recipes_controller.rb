@@ -20,6 +20,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = current_user.recipes.build(recipe_params)
+    @recipe.image.attach(params[:recipe][:image])
     if @recipe.save
       flash[:success] = "Recipe created! / レシピが投稿されました。"
       redirect_to recipes_url
@@ -50,6 +51,10 @@ class RecipesController < ApplicationController
   end
 
   private
+
+  def recipe_params
+    params.require(:recipe).permit(:content, :image)
+  end
 
   def recipe_params
     params.require(:recipe).permit(:title, :about, :picture, :_destroy,

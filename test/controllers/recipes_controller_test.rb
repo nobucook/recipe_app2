@@ -22,20 +22,25 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  # test "should create with logged in" do
-  #   log_in_as(@user)
-  #   assert_difference 'Recipe.count', 1 do
-  #      assert_difference 'Ingredient.count', 1 do
-  #           post recipes_path, params: {recipe: {
-  #                                        title: "title",
-  #                                        about: "about",
-  #                                        ingredients_attributes: {
-  #                                         ingredient: {ingre: "ingre", amount: "1cup"}
-  #                                           }
-  #                                         }
-  #                                       }
-  #       end
-  #     end
-  #   assert_redirected_to recipes_url
-  # end
+  test "should create with logged in" do
+    log_in_as(@user)
+    assert_difference 'Recipe.count', 1 do
+       assert_difference 'Ingredient.count', 1 do
+          assert_difference 'Instruction.count', 1 do
+            post recipes_path, params: {recipe: {
+                                         title: "title",
+                                         about: "about",
+                                         ingredients_attributes: {
+                                          '0': {ingre: "ingre", amount: "1cup"}
+                                        },
+                                        instructions_attributes: {
+                                          '0': {no: 1, how_to: "test"}
+                                        }
+                                          }
+                                        }
+        end
+      end
+    end
+    assert_redirected_to recipes_url
+  end
 end

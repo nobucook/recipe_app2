@@ -13,8 +13,9 @@ class RecipesController < ApplicationController
   def new
     # @recipe = current_user.recipes.build if logged_in?
     @recipe = Recipe.new
-    @recipe.instructions.build
-    @recipe.ingredients.build
+    3.times { @recipe.ingredients.build }
+    3.times { @recipe.instructions.build }
+
   end
 
   def create

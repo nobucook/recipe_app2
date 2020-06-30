@@ -13,12 +13,16 @@ class Recipe < ApplicationRecord
                     size:         { less_than: 5.megabytes,
                                     message: "should be less than 5MB" }
 
-  def display_image_200
-    image.variant(resize_to_limit: [200, 200])
+  def display_image(width, height)
+    image.variant(resize_to_limit: [width, height])
   end
 
-  def display_image_400
-    image.variant(resize_to_limit: [400, 400])
-  end
+  # def display_image_200
+  #   image.variant(resize_to_limit: [200, 200])
+  # end
+  #
+  # def display_image_400
+  #   image.variant(resize_to_limit: [400, 400])
+  # end
 
 end

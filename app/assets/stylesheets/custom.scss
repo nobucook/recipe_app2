@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   text-align: center;
 }
 
@@ -62,6 +62,13 @@ p {
 
 /* header */
 
+header {
+  height: 70px;
+  .nav {
+    margin-right: 40px;
+  }
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -76,6 +83,10 @@ p {
 #logo:hover {
   color: #bdc6b7;
   text-decoration: none;
+}
+
+.logo {
+  padding-bottom: 80px;
 }
 
 // home-bg
@@ -102,7 +113,7 @@ p {
   color: #bdc6b7;
   // text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  // padding-top: 9px;
   font-weight: bold;
 }
 
@@ -227,8 +238,6 @@ aside {
   text-align: left;
 }
 
-
-
 .amount {
   display: table-cell;
   text-align: right;
@@ -238,8 +247,13 @@ aside {
   text-align: left;
 }
 
-/* microposts */
+/* recipes */
 
+  .container {
+    margin-top: 20px;
+
+
+  }
   .user {
     margin-top: 5em;
     padding-top: 0;
@@ -284,7 +298,7 @@ max-width: 80%;
 
 .grid {
   display: grid;
-  gap: 13px;
+  gap: 26px;
   grid-template-columns: repeat(4, 1fr);
   margin-top: 6%;
   margin-bottom: 100px;
@@ -332,7 +346,18 @@ max-width: 80%;
 
 
 // post-recipe
-// --------------
+
+#post-recipe {
+  .wrapper {
+    margin-bottom: 120px;
+  }
+}
+
+fieldset {
+  // border: solid 1px;
+  margin: 15px;
+}
+
 
 
 

@@ -1,23 +1,23 @@
 <div id="post-recipe" >
     <h1>Post Recipe/レシピの投稿</h1>
-    <div class="wrapper">
+    <div class="wrapper row">
     <%= form_with model: @recipe,local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <fieldset>
-        <legend class="col-md-6">
+      <fieldset class="col-md-5">
+        <legend>
           <%= f.label :title %>
           <%= f.text_field :title, class: 'form-control' %>
 
-          <%= f.label :about, "About Recipe/コメント" %>
-          <%= f.text_area :about, class: 'form-control' %>
+          <%= f.label :about, "About Recipe / コメント" %>
+          <%= f.text_area  :about, class: 'form-control' %>
 
           <span class="image">
             <%= f.file_field :image %>
           </span>
 
           </legend>
-          </fieldset>
-          <fieldset>
+        </fieldset>
+          <fieldset class="col-md-5">
             <legend>Ingredients</legend>
             <%= f.fields_for :ingredients do |ingredients_form| %>
               <%= render "shared/ingredient_fields", f: ingredients_form %>
@@ -26,7 +26,7 @@
           </fieldset>
 
 
-          <fieldset>
+          <fieldset class="col-md-6">
             <legend>Instructions</legend>
               <%= f.fields_for :instructions do |instructions_form|%>
                 <%= render "shared/instruction_fields", f: instructions_form %>

@@ -1,5 +1,5 @@
 <% provide(:title, @recipe.title)%>
-<div class="wrapper">
+<div class="wrapper recipe-show">
   <h1 class="title"><%= @recipe.title %></h1>
   <% if current_user?(@recipe.user) %>
     <p><%= link_to "Edit", edit_recipe_path(@recipe) %></p>

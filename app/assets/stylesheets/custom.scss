@@ -15,6 +15,7 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
+  width: 1100px;
 }
 
 section {
@@ -27,11 +28,17 @@ textarea {
 
 .center {
   text-align: center;
+  h1 {
+   margin-bottom: 10px;
+   margin-top: 5px;
+   padding-top: 20%;
+   letter-spacing: 0.2rem;
+ }
+
+  // margin: auto;
 }
 
-.center h1 {
-  margin-bottom: 10px;
-}
+.center
 
 /* typography */
 
@@ -64,16 +71,22 @@ p {
 
 header {
   height: 70px;
-  .nav {
+  // background-color: #fff;
+  nav {
     margin-right: 40px;
-  }
+    font-size: 1.8rem;
+      color: #87888e;
+}
+}
+.navbar-fixed-top {
+    background-color: #fff;
 }
 
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #bdc6b7;
+  color: #87888e;
   // text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -81,13 +94,14 @@ header {
 }
 
 #logo:hover {
-  color: #bdc6b7;
+  // color: #bdc6b7;
   text-decoration: none;
 }
 
-.logo {
-  padding-bottom: 80px;
+.image-logo {
+  // margin-bottom: 5px;
 }
+
 
 // home-bg
 // -----------------------------------
@@ -104,13 +118,17 @@ header {
   background-blend-mode: luminosity;
   min-height: 100vh;
   color: #fff;
+  .home-bg {
+    vertical-align: center;
+  }
 }
+
 
 .logo {
   float: left;
   margin-right: 10px;
   font-size: 1em;
-  color: #bdc6b7;
+  color: #87888e;
   // text-transform: uppercase;
   letter-spacing: -1px;
   // padding-top: 9px;
@@ -118,9 +136,10 @@ header {
 }
 
 .logo:hover {
-  color: #bdc6b7;
+  color: #fff;
   text-decoration: none;
 }
+
 
 
 /* miscellaneous */
@@ -270,6 +289,7 @@ aside {
     color: $gray-light;
     display: block;
     margin-left: 60px;
+      font-size: 10px;
   }
 
 
@@ -301,7 +321,11 @@ max-width: 80%;
   gap: 26px;
   grid-template-columns: repeat(4, 1fr);
   margin-top: 6%;
-  margin-bottom: 100px;
+  ol {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+  }
+  // margin-bottom: 100px;
 }
 
 .recipe {
@@ -313,18 +337,25 @@ max-width: 80%;
   .recipe-title {
     font-size: 15px;
     padding: 5px 0px;
+    max-width: 250px;
   }
   .recipe-about {
     padding: 5px 0px;
-    margin: 0.5rem;
+    margin: 1rem;
     height: 6rem;
+    max-width: 250px;
+    word-wrap: break-word;
+    margin:0;
+    .p {
     text-align: left;
+    text-align: top;
+   }
   }
   .timestamp {
     margin: 1rem auto;
   }
   p {
-    font-size: 10px;
+    font-size: 11px;
     margin: 0px;
   }
   .recipe-detail {
@@ -336,9 +367,6 @@ max-width: 80%;
 }
 
 
-.timestamp {
-    font-size: 10px;
-}
 
 .page-title {
   margin: 10px 0px;

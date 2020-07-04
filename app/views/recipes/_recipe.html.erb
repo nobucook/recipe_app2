@@ -2,7 +2,7 @@
   <div class="recipe">
     <div class="recipe-detail">
         <p class="recipe-title"><%= link_to  recipe.title , recipe_path(recipe) %></p>
-        <p class="recipe-about"><%= recipe.about.truncate(218)  %></p>
+        <p class="recipe-about"><%= recipe.about.truncate(213)  %></p>
         <%= link_to image_tag(recipe.display_image(250,200)), recipe_path(recipe) if recipe.image.attached?%>
         <!-- <%= link_to image_tag("favicon.png", alt: "logo", width: "40px"),root_path, class: "logo"  if recipe.image.attached? %> -->
         <p><span class="timestamp"></p>

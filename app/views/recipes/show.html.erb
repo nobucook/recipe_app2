@@ -1,5 +1,5 @@
 <% provide(:title, @recipe.title)%>
-
+<div class="wrapper">
   <h1 class="title"><%= @recipe.title %></h1>
   <% if current_user?(@recipe.user) %>
     <p><%= link_to "Edit", edit_recipe_path(@recipe) %></p>
@@ -8,8 +8,8 @@
   <div class="row">
     <div class="col-md-6">
       <section class="information">
-        <%= image_tag @recipe.display_image(500, 400) if @recipe.image.attached? %>
         <p class="about"><%= @recipe.about %></p>
+        <%= image_tag @recipe.display_image(500, 400) if @recipe.image.attached? %>
         <p><%= link_to @recipe.user.name, @recipe.user %></p>
       </section>
     </div>
@@ -29,6 +29,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 instructions">
+    <h2 class="ingre-title">Instruction / 作り方</h2>
     <% instructions = @recipe.instructions.all %>
     <% i = 1%>
     <% instructions.each do |inst| %>
@@ -41,4 +42,5 @@
       </ol>
     <% end %>
   </div>
+</div>
 </div>

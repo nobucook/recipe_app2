@@ -1,42 +1,23 @@
-# Ruby on Rails チュートリアルを用いたレシピアプリ
+# Recipes from Japan
+This app is an recipe site for non-japanese people who is intersted in japanese home cooking.
 
-これは、次の教材で作られたレシピ投稿アプリです。
-[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
-（第6版）
-[Michael Hartl](https://www.michaelhartl.com/) 著
 
-## ライセンス
+# アプリケーションの機能一覧　
+    ・ユーザー登録機能（レシピ投稿が可能）
+    ・レシピ投稿機能（タイトル、材料、作り方、イメージ画像）
+    ・レシピ編集機能
+    ・ページネーション機能
+    ・ログイン機能
 
-[Ruby on Rails チュートリアル](https://railstutorial.jp/)内にある
-ソースコードはMITライセンスとBeerwareライセンスのもとで公開されています。
-詳細は [LICENSE.md](LICENSE.md) をご覧ください。
-
-## 使い方
-
-このアプリケーションを動かす場合は、まずはリポジトリを手元にクローンしてください。
-その後、次のコマンドで必要になる RubyGems をインストールします。
-
-```
-$ bundle install --without production
-```
-
-その後、データベースへのマイグレーションを実行します。
-
-```
-$ rails db:migrate
-```
-
-最後に、テストを実行してうまく動いているかどうか確認してください。
-
-```
-$ rails test
-```
-
-テストが無事に通ったら、Railsサーバーを立ち上げる準備が整っているはずです。
-
-```
-$ rails server
-```
-
-詳しくは、[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
-を参考にしてください。
+# Environment
+       rails '6.0.3'
+       SQLite:開発環境 (development) 
+       PostgreSQL:本番環境(production)
+       画像アップロード:AWS S3
+       Platform - Heroku
+       
+       
+       cocoon
+       nested_form
+       bootstrap
+       

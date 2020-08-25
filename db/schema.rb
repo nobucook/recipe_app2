@@ -51,15 +51,6 @@ ActiveRecord::Schema.define(version: 2020_06_28_090954) do
     t.index ["recipe_id"], name: "index_instructions_on_recipe_id"
   end
 
-  create_table "instrunctions", force: :cascade do |t|
-    t.integer "no"
-    t.text "how_to"
-    t.integer "recipe_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipe_id"], name: "index_instrunctions_on_recipe_id"
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.string "title"
     t.text "about"
@@ -84,6 +75,5 @@ ActiveRecord::Schema.define(version: 2020_06_28_090954) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "instructions", "recipes"
-  add_foreign_key "instrunctions", "recipes"
   add_foreign_key "recipes", "users"
 end

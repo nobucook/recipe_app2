@@ -232,6 +232,14 @@ aside {
   text-align: left;
 }}
 
+.image input {
+  border: none;
+}
+
+textarea {
+  min-height: 130px;
+}
+
 .ingre-title {
   h2{
     text-align: left;
@@ -256,6 +264,19 @@ aside {
   display: table-cell;
   text-align: left;
 }
+
+.ingre-field {
+  width: 100%;
+}
+
+.remove {
+  height: 74px;
+  text-align: left;
+  padding-top: 18px;
+  font-size: 3rem;
+  color: #87888e;
+}
+
 
 .amount {
   display: table-cell;

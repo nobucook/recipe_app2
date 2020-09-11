@@ -4,35 +4,39 @@
     <%= form_with model: @recipe,local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <fieldset class="col-md-5">
-        <legend>
+        <legend>Title / About Recipe</legend>
           <%= f.label :title %>
           <%= f.text_field :title, class: 'form-control' %>
 
           <%= f.label :about, "About Recipe / コメント" %>
           <%= f.text_area  :about, class: 'form-control' %>
 
-          <span class="image">
-            <%= f.file_field :image %>
-          </span>
+        <span class="image">
+          <%= f.label :image, "Recipe Image / 料理画像" %>
+          <%= f.file_field :image %>
+        </span>
+      </fieldset>
 
-          </legend>
-        </fieldset>
-          <fieldset class="col-md-5">
-            <legend>Ingredients</legend>
-            <%= f.fields_for :ingredients do |ingredients_form| %>
-              <%= render "shared/ingredient_fields", f: ingredients_form %>
-            <% end %>
+        <fieldset class="col-md-6">
+          <legend>Ingredients</legend>
+          <%= f.fields_for :ingredients do |ingredients_form| %>
+            <%= render "shared/ingredient_fields", f: ingredients_form %>
+          <% end %>
+          <div>
             <%= link_to_add_fields "Add Ingredients / 原材料の追加", f, :ingredients %>
-          </fieldset>
+          </div>
+        </fieldset>
 
 
-          <fieldset class="col-md-6">
-            <legend>Instructions</legend>
-              <%= f.fields_for :instructions do |instructions_form|%>
-                <%= render "shared/instruction_fields", f: instructions_form %>
-              <% end %>
+        <fieldset class="col-md-12">
+          <legend>Instructions</legend>
+            <%= f.fields_for :instructions do |instructions_form|%>
+              <%= render "shared/instruction_fields", f: instructions_form %>
+            <% end %>
+            <div>
               <%= link_to_add_fields "Add Instruction / 工程追加", f, :instructions %>
-          </fieldset>
+            </div>
+        </fieldset>
               <%= f.submit yield(:button_text), class: "btn btn-primary" %>
           <% end %>
 

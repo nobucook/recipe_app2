@@ -14,6 +14,12 @@ class SessionsController < ApplicationController
       end
     end
 
+    def easy_login
+      user = User.find_by(email: "test@example.com")
+          log_in user
+          redirect_back_or user
+    end  
+
     def destroy
       log_out if logged_in?
       redirect_to root_url

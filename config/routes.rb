@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/signup',  to: 'users#create'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
+  post   '/easy_login',   to: 'sessions#easy_login'
   delete '/logout',  to: 'sessions#destroy'
   get '/recipes', to: 'recipes#index'
   resources :users

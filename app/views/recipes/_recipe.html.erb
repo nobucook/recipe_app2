@@ -13,6 +13,30 @@
                                          data: { confirm: "You sure?" } %></p>
           <p><%= link_to "Edit", edit_recipe_path(recipe) %></p>
           <% end %>
+          <p> 
+          <% if logged_in? %>
+              <% if current_user.liking?(recipe)%>
+                <%= form_for(current_user.active_likes.find_by(liked_id: recipe.id),
+                      html: {method: :delete}) do |f| %>
+                  <%= f.button type: "submit" do%>
+                  <i class="far fa-heart unlike-btn" ></i>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= form_for(current_user.active_likes.build) do |f| %>
+                  <div><%= hidden_field_tag :liked_id, recipe.id%></div>
+                  <%= f.button type: "submit" do%>
+                  <i class="far fa-heart like-btn" ></i>
+                  <% end %>
+                <% end %>
+                <% end %>
+           <% else %>
+               <i class="far fa-heart like-btn" ></i>
+           <% end %>
+           <% if recipe.likers.count > 0%>
+                 <%= recipe.likers.count %>
+           <%end%>
+          <p>
         </span>
     </div>
 </div>

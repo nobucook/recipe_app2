@@ -1,0 +1,14 @@
+<div id = "like_form"> 
+  <% if logged_in?%>
+    <%if current_user.liking?(@recipe) %>
+      <%=render"unlike"%>
+    <%else%>
+      <%=render"like"%>
+    <%end%>
+  <% else %>
+    <i class="far fa-heart like-btn" ></i>
+    <% if recipe.likers.count > 0%>
+      <%= recipe.likers.count %>
+    <%end%>
+  <% end%>
+  </div>

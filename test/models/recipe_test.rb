@@ -25,4 +25,5 @@ class RecipeTest < ActiveSupport::TestCase
     test "order should be most recent first" do
       assert_equal recipes(:most_recent), Recipe.first
     end
+
 end

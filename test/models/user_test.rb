@@ -87,4 +87,15 @@ end
     end
  end
 
+ test "should like and unlike a recipe" do
+   user = users(:michael)
+   medamayaki = recipes(:medamayaki)
+   assert_not user.liking?(medamayaki)
+   user.like(medamayaki)
+   assert user.liking?(medamayaki)
+   assert medamayaki.likers.include?(user)
+   user.unlike(medamayaki)
+   assert_not user.liking?(medamayaki)
+ end
+
 end

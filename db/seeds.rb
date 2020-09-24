@@ -23,3 +23,12 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.recipes.create!(title: title,
                                             about: about) }
 end
+
+
+user = User.first 
+user2 = User.second 
+liker = users[2..10]
+recipes = Recipe.all[2..10]
+recipes2 = Recipe.all[6..15]
+recipes.each{|liked| user.like(liked)}
+recipes2.each{|liked2| user2.like(liked2)}

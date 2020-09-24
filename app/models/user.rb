@@ -1,5 +1,10 @@
 class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
+  has_many :active_likes, class_name: "Like", foreign_key: "liker_id",
+                  dependent: :destroy
+  has_many :liking,
+                  through: 'active_likes',
+                  source: 'liked'
   attr_accessor :remember_token
   before_save {email.downcase!}
   validates :name,  presence: true, length: { maximum: 50 }
@@ -34,5 +39,18 @@ class User < ApplicationRecord
   def forget
    update_attribute(:remember_digest, nil)
   end
+
+  def like(recipe)
+    liking << recipe
+  end
+
+  def unlike(recipe)
+    self.active_likes.find_by(liked_id: recipe.id).destroy
+  end
+
+  def liking?(recipe)
+    self.liking.include?(recipe)
+  end
+  
 
 end

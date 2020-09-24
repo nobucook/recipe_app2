@@ -7,8 +7,8 @@
     <%end%>
   <% else %>
     <i class="far fa-heart like-btn" ></i>
-    <% if recipe.likers.count > 0%>
-      <%= recipe.likers.count %>
-    <%end%>
   <% end%>
+     <% if @recipe.likers.count > 0%>
+        <div><%= @recipe.likers.count %></div>
+      <%end%>
   </div>

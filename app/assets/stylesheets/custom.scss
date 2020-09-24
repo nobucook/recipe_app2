@@ -98,9 +98,7 @@ header {
   text-decoration: none;
 }
 
-.image-logo {
-  // margin-bottom: 5px;
-}
+
 
 
 // home-bg
@@ -194,10 +192,6 @@ input {
   margin-left: 0;
 }
 
-.recipes {
-  // display: inline-block;
-  // float: left;
-}
 
 // likeボタン
 .like-btn {
@@ -215,6 +209,15 @@ input {
   color: #e54747;
   margin-left: 20px;
   }
+
+#like_form {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  i {
+    margin-right: 4px;
+  }
+}
 
 /* sidebar */
 

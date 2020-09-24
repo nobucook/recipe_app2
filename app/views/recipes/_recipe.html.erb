@@ -8,18 +8,13 @@
         <p><span class="timestamp"></p>
           <p>Posted <%= time_ago_in_words(recipe.created_at) %> ago.</p>
         <p class="user"><%= link_to recipe.user.name, recipe.user %></p>
-          <% if current_user?(recipe.user) %>
-          <p class="delete"><%= link_to "Delete", recipe, method: :delete,
-                                         data: { confirm: "You sure?" } %></p>
-          <p><%= link_to "Edit", edit_recipe_path(recipe) %></p>
-          <% end %>
-          <p> 
+          <div id = "like_form"> 
           <% if logged_in? %>
               <% if current_user.liking?(recipe)%>
                 <%= form_for(current_user.active_likes.find_by(liked_id: recipe.id),
                       html: {method: :delete}) do |f| %>
                   <%= f.button type: "submit" do%>
-                  <i class="far fa-heart unlike-btn" ></i>
+                  <i class="fas fa-heart unlike-btn" ></i>
                   <% end %>
                 <% end %>
               <% else %>
@@ -34,9 +29,14 @@
                <i class="far fa-heart like-btn" ></i>
            <% end %>
            <% if recipe.likers.count > 0%>
-                 <%= recipe.likers.count %>
+                 <div><%= recipe.likers.count %></div>
            <%end%>
-          <p>
+          </div>
+          <% if current_user?(recipe.user) %>
+          <p class="delete"><%= link_to "Delete", recipe, method: :delete,
+                                         data: { confirm: "You sure?" } %></p>
+          <p><%= link_to "Edit", edit_recipe_path(recipe) %></p>
+          <% end %>
         </span>
     </div>
 </div>

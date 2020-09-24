@@ -2,9 +2,6 @@
   <%= form_for(current_user.active_likes.find_by(liked_id: @recipe.id),
           html: {method: :delete}) do |f| %>
     <%= f.button type: "submit" do%>
-      <i class="far fa-heart unlike-btn" ></i>
+      <i class="fas fa-heart unlike-btn" ></i>
     <% end %>
   <% end %>
-<% if @recipe.likers.count > 0%>
-  <%= @recipe.likers.count %>
-<%end%>

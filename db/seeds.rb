@@ -5,7 +5,14 @@ User.create!(name:  "Example User",
              password_confirmation: "foobar",
              admin: true)
 
-# 追加のユーザーをまとめて生成する
+#Categoryを作成
+categories = %w(Main Side Salad Soup Rice Bread Noodle Pasta Chicken Pork Beef Vegitable Seafood)
+categories.length.times do |n|
+  name = categories[n]
+  Category.create!(name: name)
+end
+  
+  # 追加のユーザーをまとめて生成する
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"

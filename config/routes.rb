@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
   resources :categories do
     member do
-      get :recipes
+      get :recipe
     end
   end
   resources :instructions, only: [:new, :create, :edit, :update, :destroy]

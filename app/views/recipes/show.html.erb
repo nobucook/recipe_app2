@@ -21,7 +21,7 @@
           <p>Category</p>
           <span>
             <% @recipe.categories.each do |category| %>
-            <%= link_to category.name, recipes_category_path(category) %>
+            <%= link_to category.name, recipe_category_path(id: category.id) %>
             <% end %>
           </span>
         <% end %>

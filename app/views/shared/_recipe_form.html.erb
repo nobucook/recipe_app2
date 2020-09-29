@@ -17,7 +17,7 @@
         </span>
 
         <legend>Categories</legend>
-          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name,  include_hidden: false ) do |category| %>
             <%= category.label do %>
               <%= category.text %>
               <%= category.check_box %>

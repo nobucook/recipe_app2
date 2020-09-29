@@ -17,6 +17,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
            post recipes_path, params: {recipe: {
                                         title: "",
                                         about: "",
+                                        category_ids: [],
                                         ingredients_attributes: {
                                          '0': {ingre: "", amount: ""}
                                        },
@@ -32,17 +33,20 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     # 有効な送信
     title = "tekka-don"
     about = "tuna"
+    category = [1]
     ingre = "ingre"
     amount = "amount"
     how_to = "how_to"
     no = 1
     log_in_as(@user)
     assert_difference 'Recipe.count', 1 do
+      # assert_difference 'RecipeCategoryRelation.count', 1 do
        assert_difference 'Ingredient.count', 1 do
           assert_difference 'Instruction.count', 1 do
             post recipes_path, params: {recipe: {
                                          title: title,
                                          about: about,
+                                        #  category_id: 1,
                                          ingredients_attributes: {
                                           '0': {ingre: ingre, amount: amount}
                                         },
@@ -51,13 +55,15 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
                                         }
                                           }
                                         }
+          end
         end
-      end
+      # end
     end
     assert_redirected_to recipes_url
     follow_redirect!
     assert_match title, response.body
     assert_match about, response.body
+
 
     @recipe = @user.recipes.paginate(page: 1).first
 
@@ -71,6 +77,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     get recipe_path(@recipe)
     assert_match title, response.body
     assert_match about, response.body
+    # assert_match "Main",response.body
     assert_match ingre, response.body
     assert_match amount, response.body
     assert_match no.to_s, response.body

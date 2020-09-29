@@ -14,7 +14,7 @@
               </a>
               <ul class="dropdown-menu">
               <% Category.all.each do |category| %> 
-                <li><%= link_to category.name, recipes_category_path(category) %></li>
+                <li><%= link_to category.name, recipe_category_path(id: category.id) %></li>
               <% end %>
               </ul>
             </li>

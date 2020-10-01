@@ -4,6 +4,8 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
+    @category = categories(:Main)
+    @category2 = categories(:Side)
   end
 
   test "recipe interface" do
@@ -33,20 +35,20 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     # 有効な送信
     title = "tekka-don"
     about = "tuna"
-    category = [1]
+    category = @category.id
     ingre = "ingre"
     amount = "amount"
     how_to = "how_to"
     no = 1
     log_in_as(@user)
     assert_difference 'Recipe.count', 1 do
-      # assert_difference 'RecipeCategoryRelation.count', 1 do
+      assert_difference 'RecipeCategoryRelation.count', 1 do
        assert_difference 'Ingredient.count', 1 do
           assert_difference 'Instruction.count', 1 do
             post recipes_path, params: {recipe: {
                                          title: title,
                                          about: about,
-                                        #  category_id: 1,
+                                         category_ids: [category],
                                          ingredients_attributes: {
                                           '0': {ingre: ingre, amount: amount}
                                         },
@@ -57,7 +59,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
                                         }
           end
         end
-      # end
+      end
     end
     assert_redirected_to recipes_url
     follow_redirect!
@@ -70,6 +72,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     get user_path(@user)
     assert_match title, response.body
     assert_match about, response.body
+    assert_match @category.name, response.body
 
 
 
@@ -77,7 +80,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     get recipe_path(@recipe)
     assert_match title, response.body
     assert_match about, response.body
-    # assert_match "Main",response.body
+    assert_match @category.name,response.body
     assert_match ingre, response.body
     assert_match amount, response.body
     assert_match no.to_s, response.body
@@ -89,6 +92,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     assert_template 'recipes/edit'
     title = "una-don"
     about = "unagi"
+    category = @category2.id
     ingre = "ingre2"
     amount = "amount2"
     how_to = "how_to2"
@@ -96,6 +100,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     patch recipe_path(@recipe), params: {recipe: {
                                  title: title,
                                  about: about,
+                                 category_ids: [category],
                                  ingredients_attributes: {
                                   '0': {ingre: ingre, amount: amount}
                                 },
@@ -110,6 +115,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     @recipe.reload
     assert_equal title,  @recipe.title
     assert_equal about, @recipe.about
+    assert_equal @category2.name, @recipe.categories.first.name
 
 
 

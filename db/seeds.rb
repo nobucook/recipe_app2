@@ -1,12 +1,19 @@
 # メインのサンプルユーザーを1人作成する
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
+User.create!(name:  "Admin User",
+             email: "tomo.nobu777+admin@gmail.com",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true)
 
+#簡単ログイン用のユーザーを作成する。
+User.create!(name: "Guest User",
+                   email: "test@example.com",
+                   password: "unkotintin",
+                  password_confirmation: "unkotintin")
+
+
 #Categoryを作成
-categories = %w(Main Side Salad Soup Rice Bread Noodle Pasta Chicken Pork Beef Vegitable Seafood)
+categories = %w(Main Side Salad Soup Casserole Rice Bread Noodle Pasta/Gratin Chicken Pork Beef Vegitable Seafood Sweets Party Lunch Others)
 categories.length.times do |n|
   name = categories[n]
   Category.create!(name: name)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_22_131814) do
+ActiveRecord::Schema.define(version: 2020_09_26_012747) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 2020_09_22_131814) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -61,6 +67,16 @@ ActiveRecord::Schema.define(version: 2020_09_22_131814) do
     t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
+  create_table "recipe_category_relations", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_recipe_category_relations_on_category_id"
+    t.index ["recipe_id", "category_id"], name: "index_recipe_category_relations_on_recipe_id_and_category_id", unique: true
+    t.index ["recipe_id"], name: "index_recipe_category_relations_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "title"
     t.text "about"
@@ -85,5 +101,7 @@ ActiveRecord::Schema.define(version: 2020_09_22_131814) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "instructions", "recipes"
+  add_foreign_key "recipe_category_relations", "categories"
+  add_foreign_key "recipe_category_relations", "recipes"
   add_foreign_key "recipes", "users"
 end

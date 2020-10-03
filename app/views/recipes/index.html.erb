@@ -1,9 +1,10 @@
 <% provide(:title, "Recipes") %>
 
 <div class="recipe-content wrapper">
-  <h2 class="page-title">Recent Recipes</h2>
+  <h2 class="page-title"><%= @page_title %></h2>
     <div class="wrapper grid">
         <%= render @recipes %>
     </div>
-    <%= will_paginate %>
+    <%= will_paginate @recipes %>
 </div>
+  

@@ -28,6 +28,11 @@ Rails.application.routes.draw do
       get :likers
     end
   end
+  resources :categories do
+    member do
+      get :recipe
+    end
+  end
   resources :instructions, only: [:new, :create, :edit, :update, :destroy]
   resources :ingredients, only: [:new, :create, :edit, :update, :destroy]
   resources :likes, only: [:create, :destroy]

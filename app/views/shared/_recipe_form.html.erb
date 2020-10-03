@@ -15,6 +15,14 @@
           <%= f.label :image, "Recipe Image / 料理画像" %>
           <%= f.file_field :image %>
         </span>
+
+        <legend>Categories</legend>
+          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name,  include_hidden: false ) do |category| %>
+            <%= category.label do %>
+              <%= category.text %>
+              <%= category.check_box %>
+            <%end%>
+          <% end %>
       </fieldset>
 
         <fieldset class="col-md-6">

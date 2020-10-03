@@ -3,8 +3,21 @@ class RecipesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @page_title = "Recent Recipes"
     @recipes = Recipe.all.paginate(page: params[:page])
   end
+
+  # def recipe_with_category
+  #     # @category = Category.find_by(id: params[:category_id])
+  #     @recipe_category_relations = RecipeCategoryRelation.where(category_id: params[:category_id])
+  #     @recipe_category_relations.each do |relation|
+  #       @recipes = []
+  #       @recipes << Recipe.find_by(id: relation.recipe_id)
+  #     end
+
+  #     # @recipes = @recipes.paginate(page: params[:page])
+  #     render 'recipes_with_category'
+  # end
 
   def show
     @recipe = Recipe.find(params[:id])
@@ -52,12 +65,13 @@ class RecipesController < ApplicationController
 
   private
 
-  def recipe_params
-    params.require(:recipe).permit(:content, :image)
-  end
+  # def recipe_params
+  #   params.require(:recipe).permit(:content, :image)
+  # end
 
   def recipe_params
     params.require(:recipe).permit(:title, :about, :image, :_destroy,
+                              category_ids: [], 
                               instructions_attributes: [:id, :no, :how_to, :_destroy],
                               ingredients_attributes: [:id, :ingre, :amount, :_destroy]
                             )

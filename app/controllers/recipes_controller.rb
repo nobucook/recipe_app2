@@ -3,21 +3,17 @@ class RecipesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @page_title = "Recent Recipes"
-    @recipes = Recipe.all.paginate(page: params[:page])
+    if params[:option] == "recent" || params[:option] == nil
+      @page_title = "Recent Recipes"
+      @recipes = Recipe.all.order(created_at: :desc).paginate(page: params[:page])
+    elsif params[:option] == "popular"
+      @page_title = "Popular Recipes"
+      recipes_hash = Recipe.joins(:passive_likes).group("liked_id").order('count_all DESC').order(created_at: :desc).count
+      recipe_ids = recipes_hash.keys
+      recipe_array = Recipe.find(recipe_ids).sort_by{ |recipe| recipe_ids.index(recipe.id)}
+      @recipes = Kaminari.paginate_array(recipe_array).page(params[:page]).per(20)
+    end
   end
-
-  # def recipe_with_category
-  #     # @category = Category.find_by(id: params[:category_id])
-  #     @recipe_category_relations = RecipeCategoryRelation.where(category_id: params[:category_id])
-  #     @recipe_category_relations.each do |relation|
-  #       @recipes = []
-  #       @recipes << Recipe.find_by(id: relation.recipe_id)
-  #     end
-
-  #     # @recipes = @recipes.paginate(page: params[:page])
-  #     render 'recipes_with_category'
-  # end
 
   def show
     @recipe = Recipe.find(params[:id])

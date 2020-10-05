@@ -1,4 +1,4 @@
-# メインのサンプルユーザー（admin）を1人作成する
+# メインのサンプルユーザー（admin）を1人作成する。（20.10.3本番環境へ反映済み。）
 User.create!(name:  "Admin User",
              email: "tomo.nobu777+admin@gmail.com",
              password:              "unkotintin",
@@ -12,7 +12,7 @@ User.create!(name:  "Admin User",
 #                   password_confirmation: "foobar")
 
 
-#Categoryを作成
+#Categoryを作成（20.10.3本番環境へ反映済み。）
 categories = %w(Main Side Salad Soup Casserole Rice Bread Noodle Pasta/Gratin Chicken Pork Beef Vegitable Seafood Sweets Party Lunch Others)
 categories.length.times do |n|
   name = categories[n]

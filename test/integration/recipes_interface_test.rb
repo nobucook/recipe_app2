@@ -67,7 +67,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     assert_match about, response.body
 
 
-    @recipe = @user.recipes.paginate(page: 1).first
+    @recipe = @user.recipes.order(created_at: :desc).paginate(page: 1).first
 
     get user_path(@user)
     assert_match title, response.body

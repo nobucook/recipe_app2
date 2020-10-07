@@ -22,8 +22,5 @@ class RecipeTest < ActiveSupport::TestCase
       assert_not @recipe.valid?
     end
 
-    test "order should be most recent first" do
-      assert_equal recipes(:most_recent), Recipe.first
-    end
 
 end

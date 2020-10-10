@@ -6,6 +6,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
     @category = categories(:Main)
     @category2 = categories(:Side)
+    @misoshiru = recipes(:misoshiru)
   end
 
   test "recipe interface" do
@@ -130,5 +131,13 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     # 違うユーザーのプロフィールにアクセス（削除リンクがないことを確認）
     get user_path(users(:archer))
     assert_select 'p', text: 'Delete', count: 0
+  end
+
+  @recipe1 = Recipe.joins(:passive_likes).group("liked_id").order('count_all DESC', created_at: :desc).count.keys[0]
+  
+  #likeの数による並び替え
+  test  "test recipe sort order by count of likes" do
+    get recipes_path(option: "popular")
+    assert_select 'div.pagination'
   end
 end

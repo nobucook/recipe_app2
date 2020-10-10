@@ -13,4 +13,10 @@ three:
 
 four:
   liker: lana
-  liker: misoshiru
+  liked: misoshiru
+
+<% 30.times do |n| %>
+like_<%= n %>:
+  liker: archer
+  liked: recipe_<%= n %>
+<% end %>

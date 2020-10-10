@@ -6,10 +6,21 @@ class CategoriesController < ApplicationController
   end
   
   def recipe
-    @category = Category.find(params[:id]) 
-    @recipes = @category.recipes.paginate(page: params[:page])
-    @page_title = "#{@category.name} Recipes"
-    render template: "recipes/index"
+    if params[:option] == "recent" || params[:option] == nil
+      @category = Category.find(params[:id]) 
+      @recipes = @category.recipes.order(created_at: :desc).paginate(page: params[:page])
+      @page_title = "Recent #{@category.name} Recipes"
+      render template: "recipes/index"
+    elsif
+      @category = Category.find(params[:id]) 
+      # @recipes = @category.recipes.order(created_at: :desc).paginate(page: params[:page])
+      recipes_hash = @category.recipes.joins(:passive_likes).group("liked_id").order('count_all DESC').order(created_at: :desc).count
+      recipe_ids = recipes_hash.keys
+      recipe_array = Recipe.find(recipe_ids).sort_by{ |recipe| recipe_ids.index(recipe.id)}
+      @recipes = Kaminari.paginate_array(recipe_array).page(params[:page]).per(20)
+      @page_title = "Popular #{@category.name} Recipes"
+      render template: "recipes/index"
+    end
   end
   
   # def find_recipe(category)

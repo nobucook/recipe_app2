@@ -14,7 +14,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
       assert_select 'h1', text: @user.name
       assert_match @user.recipes.count.to_s, response.body
       assert_select 'div.pagination'
-      @user.recipes.paginate(page: 1).each do |recipe|
+      @user.recipes.order(created_at: :desc).paginate(page: 1).each do |recipe|
         assert_match recipe.title, response.body
         assert_match recipe.about, response.body
       end

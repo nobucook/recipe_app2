@@ -7,3 +7,7 @@ one:
 two:
   recipe: misoshiru
   category: Side
+
+three:
+  recipe: most_recent
+  category: Side

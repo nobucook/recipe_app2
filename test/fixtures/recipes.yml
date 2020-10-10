@@ -1,5 +1,5 @@
 medamayaki:
-  title: "medamayali"
+  title: "medamayaki"
   about: "for breakfast"
   created_at: <%= 10.minutes.ago %>
   user: michael

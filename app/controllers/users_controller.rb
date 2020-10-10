@@ -9,8 +9,15 @@ class UsersController < ApplicationController
   end
 
   def show
-      @user = User.find(params[:id])
-      @recipes = @user.recipes.paginate(page: params[:page])
+    @user = User.find(params[:id])
+    if params[:option] == "recent" || params[:option] == nil
+      @recipes = @user.recipes.order(created_at: :desc).paginate(page: params[:page])
+    elsif
+      recipes_hash = @user.recipes.joins(:passive_likes).group("liked_id").order('count_all DESC').order(created_at: :desc).count
+      recipe_ids = recipes_hash.keys
+      recipe_array = Recipe.find(recipe_ids).sort_by{ |recipe| recipe_ids.index(recipe.id)}
+      @recipes = Kaminari.paginate_array(recipe_array).page(params[:page]).per(20)
+    end
   end
 
   def new

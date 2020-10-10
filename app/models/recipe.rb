@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
                    source: "liker"
   has_many :recipe_category_relations, dependent: :destroy
   has_many :categories, through: "recipe_category_relations"
-  default_scope -> { order(created_at: :desc) }
+  # default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :title, presence: true
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],

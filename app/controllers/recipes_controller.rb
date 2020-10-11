@@ -8,8 +8,8 @@ class RecipesController < ApplicationController
       @recipes = Recipe.all.order(created_at: :desc).paginate(page: params[:page])
     elsif params[:option] == "popular"
       @page_title = "Popular Recipes"
-      recipes_hash = Recipe.joins(:passive_likes).group("liked_id").order('count_all DESC', created_at: :desc).count
-      # recipes_hash = Recipe.joins(:passive_likes).group("liked_id").order('count_all DESC').order(created_at: :desc).count
+      # recipes_hash = Recipe.joins(:passive_likes).group("liked_id").order('count_all DESC', created_at: :desc).count
+      recipes_hash = Recipe.joins(:passive_likes).group("liked_id").order('count_all DESC').order(created_at: :desc).count
       recipe_ids = recipes_hash.keys
       recipe_array = Recipe.find(recipe_ids).sort_by{ |recipe| recipe_ids.index(recipe.id)}
       @recipes = Kaminari.paginate_array(recipe_array).page(params[:page]).per(20)

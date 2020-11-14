@@ -10,7 +10,8 @@ gem 'bcrypt',         '3.1.13'
 gem 'faker',                   '2.1.2'
 gem 'will_paginate',           '3.1.8'
 gem 'bootstrap-will_paginate', '1.0.0'
-gem 'bootstrap-sass', '3.4.1'
+# gem 'bootstrap-sass', '3.4.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'cocoon'
 gem "nested_form"
@@ -51,5 +52,3 @@ end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'bootstrap'

@@ -1,4 +1,4 @@
-@import "bootstrap-sprockets";
+// @import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* mixins, variables, etc. */
@@ -8,14 +8,14 @@ $gray-medium-light: #eaeaea;
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
+  box-sizing:         border-box; 
 }
 
 /* universal */
 
-body {
-  padding-top: 60px;
-  // width: 1100px;
+.body {
+  margin-top: 20px;
+  margin-bottom: 70px;;
 }
 
 section {
@@ -71,43 +71,52 @@ p {
   // }
 }
 
-.header-nav{
-  color:gray-medium-ligh;
+.navbar{
+  color:$gray-medium-light;
 	background-color: #fefefe;
   padding-top: 12px;
   padding-bottom: 12px;
-  border-top: 5px gray-medium-ligh solid;
-  border-bottom: 1px gray-medium-ligh solid;
+  border-top: 5px $gray-medium-light solid;
+  border-bottom: 1px $gray-medium-light solid;
 
 	.nav-item{
+    margin: 0 25px 0 20px;
 		a{
-			// color: gray-medium-ligh;
+			color: $gray-medium-light;
       text-decoration: none;
-      margin: 0 25px 0 5px;
-      font-size: 20px;
-		}
+      font-size: 15px;
+      // letter-spacing: -1px;
+      // font-weight: bold;
+    }
+    }
 	}
-}
 
-#logo {
+
+// .nav-item > span >i {
+//   font-family: 'Glyphicons Halflings';
+//   font-family: "Hiragino Kaku Gothic ProN", "游ゴシック", "Yu Gothic", sans-serif;
+// }
+
+.logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
-  height: 100%;
-  color: #87888e;
+  font-size: 25px;
+  // color: #87888e;
+  color: rgba(0,0,0,.5);
   // text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  // padding-top: 9px;
   font-weight: bold;
+  &:hover {
+    color:rgba(0,0,0, .7);
+    text-decoration: none;
+  }
 }
 
-#logo:hover {
-  // color: #bdc6b7;
-  text-decoration: none;
+
+i.fas::before, i.far::before {
+  margin-right: 3px;
 }
-
-
-
 
 // home-bg
 // -----------------------------------
@@ -129,22 +138,6 @@ p {
   }
 }
 
-
-.logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1em;
-  color: #87888e;
-  // text-transform: uppercase;
-  letter-spacing: -1px;
-  // padding-top: 9px;
-  font-weight: bold;
-}
-
-.logo:hover {
-  color: #fff;
-  text-decoration: none;
-}
 
 
 
@@ -179,12 +172,14 @@ input {
   }
 }
 
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
+// .field_with_errors {
+//   @extend .has-error;
+//   .form-control {
+//     // color: $state-danger-text;
+//     // color: $state-warning-text;
+//     color: red
+//   }
+// }
 
 .checkbox {
   margin-top: -10px;
@@ -298,10 +293,9 @@ textarea {
 }
 
 .remove {
-  height: 74px;
+  color: black;
   text-align: left;
-  padding-top: 18px;
-  font-size: 3rem;
+  font-size: 1.7rem;
   color: #87888e;
 }
 
@@ -333,7 +327,8 @@ textarea {
     }
   }
   .timestamp {
-    color: $gray-light;
+    // color: $gray-light;
+    color: #bbb;
     display: block;
     margin-left: 60px;
       font-size: 10px;
@@ -357,7 +352,7 @@ span.picture {
 /* recipe */
 
 .recipe-content {
-max-width: 80%;
+// max-width: 80%;
 
   .page-title{
     text-align: left;
@@ -374,6 +369,24 @@ max-width: 80%;
     padding-bottom: 5px;
   }
   // margin-bottom: 100px;
+}
+
+@media(max-width: 992px){
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media(max-width: 768px){
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 480px){
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .recipe {
@@ -437,5 +450,29 @@ fieldset {
   margin: 15px;
 }
 
+a.add_fields {
+  // display: block;
+  background-color: #777;
+  color:white;
+  float: right;
+  text-decoration: none;
+  border: solid 1px #777;
+  padding: 4px;
+  border-radius: 3px;
+  margin-right: 42px;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+a.remove_fields {
+  color: #777;
+  &:hover{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
 
 

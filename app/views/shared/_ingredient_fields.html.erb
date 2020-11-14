@@ -1,14 +1,14 @@
-<div class="nested-fields ingre-fields">
+<div class="nested-fields ingre-fields form-row">
   <%= f.hidden_field :_destroy %>
-  <div class="col-md-7">
-    <%= f.label :ingre, "Ingredient / \n原材料" %>
+  <div class="form-group col-7">
+    <% f.label :ingre, "Ingredient / \n原材料" %>
     <%= f.text_field :ingre, class: 'form-control'%>
   </div>
-  <div  class="col-md-4">
-    <%= f.label :amount, "Amount / \n分量" %>
+  <div  class="form-group col-4">
+    <% f.label :amount, "Amount / \n分量" %>
     <%= f.text_field :amount, class: 'form-control' %>
   </div>
-  <div class="col-md-1 remove">
+  <div class="form-group col-1 remove">
     <%= link_to "×", "#", class: "remove_fields" %>
   </div>
 </div>

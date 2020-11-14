@@ -1,9 +1,10 @@
 <div id="post-recipe" >
     <h1>Post Recipe/レシピの投稿</h1>
-    <div class="wrapper row">
     <%= form_with model: @recipe,local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <fieldset class="col-md-5">
+    <div class="wrapper row">
+      <div class="col-md-6">
+      <fieldset>
         <legend>Title / About Recipe</legend>
           <%= f.label :title %>
           <%= f.text_field :title, class: 'form-control' %>
@@ -24,9 +25,16 @@
             <%end%>
           <% end %>
       </fieldset>
+      </div>
 
-        <fieldset class="col-md-6">
-          <legend>Ingredients</legend>
+      <div class="col-md-6 row">
+        <fieldset>
+          <legend class="row">
+            <%# <div class="row"> %>
+              <div class="col-7">ingredient/原材料</div>
+              <div class="col-5">amount/分量</div>
+            <%# </div> %>
+          </legend>
           <%= f.fields_for :ingredients do |ingredients_form| %>
             <%= render "shared/ingredient_fields", f: ingredients_form %>
           <% end %>
@@ -34,10 +42,16 @@
             <%= link_to_add_fields "Add Ingredients / 原材料の追加", f, :ingredients %>
           </div>
         </fieldset>
+        </div>
 
-
-        <fieldset class="col-md-12">
-          <legend>Instructions</legend>
+        <div class="col-md-12">
+        <fieldset>
+          <legend>
+          <div class="row">
+            <p class="col-1">No.</p>
+            <p class="col-10">instruction / 作り方</p>
+          </div>
+          </legend>
             <%= f.fields_for :instructions do |instructions_form|%>
               <%= render "shared/instruction_fields", f: instructions_form %>
             <% end %>
@@ -45,8 +59,10 @@
               <%= link_to_add_fields "Add Instruction / 工程追加", f, :instructions %>
             </div>
         </fieldset>
-              <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+              <%= f.submit yield(:button_text), class: "btn btn-primary col-4 offset-4" %>
           <% end %>
+        </div>
+
 
 
           </div><!-- wrapper -->

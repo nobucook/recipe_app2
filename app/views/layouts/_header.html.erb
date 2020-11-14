@@ -1,10 +1,8 @@
 <header class="navbar navbar-fixed-top navbar-inverse ">
-      <div class="header">
-        <h1>
+      <div class="header title">
           <%= link_to image_tag("favicon.png", alt: "logo", width: "40px"),
-                          root_path, class: "logo" %>
-          <%= link_to "Recipes from Japan", root_path, class: "logo" %>
-        </h1>
+                          root_path, {class: "logo"} %>
+          <%= link_to "Recipes from Japan", root_path, {class: "logo"} %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Recipes",   recipes_path %></li>

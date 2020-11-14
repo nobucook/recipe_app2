@@ -398,19 +398,26 @@ span.picture {
   .recipe-title {
     font-size: 15px;
     padding: 5px 0px;
-    max-width: 250px;
+    // max-width: 250px;
+    width: 250px;
   }
   .recipe-about {
     padding: 5px 0px;
     margin: 1rem;
     height: 6rem;
-    max-width: 250px;
+    // max-width: 250px;
+    width: 250px;
     word-wrap: break-word;
     margin:0;
     .p {
     text-align: left;
     text-align: top;
    }
+  }
+  img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
   }
   .timestamp {
     margin: 1rem auto;

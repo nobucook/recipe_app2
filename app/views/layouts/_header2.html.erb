@@ -69,9 +69,21 @@
          </div>
       </li>
       <% else %>
-       <li class="nav-item"><%= link_to "Users",   users_path, {class: "nav-link"} %></li>
-       <li class="nav-item"><%= link_to "Sign up",   signup_path, {class: "nav-link"} %></li>
-       <li class="nav-item"><%= link_to "Log in",   login_path, {class: "nav-link"} %></li>
+      <li class="nav-item">
+      <%= link_to  users_path, {class: "nav-link"} do %>
+        <i class="fas fa-users">Users</i>
+      <% end %>
+      </li>
+      <li class="nav-item">
+      <%= link_to signup_path, {class: "nav-link"} do %>
+        <i class="fas fa-user-plus">Sign up</i>
+        <% end %>
+      </li>
+       <li class="nav-item">
+       <%= link_to login_path, {class: "nav-link"} do %>
+       <i class="fas fa-sign-in-alt">Log in</i>
+       <% end %>
+       </li>
       <% end %>
     </ul>
   </div>

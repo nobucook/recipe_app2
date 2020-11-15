@@ -42,13 +42,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  // font-size: 3em;
   letter-spacing: -2px;
+  font-size: 2rem;
+  color: #777;
   // margin-bottom: 30px;
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 2rem;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -59,15 +61,22 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.1em;
+  color: #777;
+}
+
+a {
+  color: #777;
+  text-decoration: none;
+  background-color: transparent;
+}
+/* line 13, /Users/nakamuratomonobu/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_hover.scss */
+a:hover {
+  color: black;
+  text-decoration: none;
 }
 
 /* header */
 
-  button {
-    height: 50px;
-    width: 50px;
-  // }
-}
 
 .navbar{
   color:$gray-medium-light;
@@ -87,7 +96,7 @@ p {
       // font-weight: bold;
     }
     }
-	}
+  }
 
 
 // .nav-item > span >i {
@@ -222,6 +231,12 @@ input {
 
 /* sidebar */
 
+
+.recipe_title_show {
+  text-align: center;
+  font-size: 2rem;
+}
+
 aside {
   section.user_info {
     margin-top: 20px;
@@ -268,7 +283,7 @@ textarea {
 }
 
 .information {
-    width: 80%;
+    width: 100%;
 }
 
 .ingredients {
@@ -354,7 +369,6 @@ span.picture {
 
   .page-title{
     text-align: left;
-    font-size: 24px;
   }}
 
 .grid {
@@ -401,21 +415,23 @@ span.picture {
   // height: 435px;
   .recipe-title {
     text-align: center;
-    font-size: 15px;
-    height: 2rem;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 18px;
+    height: 2.5rem;
     padding: 5px 0px;
-    max-width: 250px;
+    // max-width: 250px;
     // width: 250px;
-    word-wrap: break-word;
+    word-break: break-all;
+    // word-wrap: break-word;
   }
   .recipe-about {
-
     padding: 5px 0px;
     margin:8px 0;
     height: 4rem;
-    max-width: 250px;
+    // max-width: 250px;
     // width: 250px;
-    word-wrap: break-word;
+    word-break: break-all;
     overflow: hidden;
     text-overflow: ellipsis;
     // white-space: nowrap;
@@ -428,11 +444,11 @@ span.picture {
       text-align: top;
     }
   }
+
   img {
-    width: 250px;
+    width: 100%;
     height: 200px;
     object-fit: cover;
-
   }
   .timestamp {
     margin: 1rem auto;
@@ -457,6 +473,11 @@ span.picture {
 
 .recipe-show {
   margin-bottom: 60px;
+  img {
+    object-fit: cover;
+    width: 500px;
+    height: 400px;
+  }
 }
 
 // post-recipe
@@ -497,4 +518,6 @@ a.remove_fields {
   }
 }
 
-
+.pagination li {
+  margin: 0 3px;
+}

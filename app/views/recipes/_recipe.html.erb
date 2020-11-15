@@ -5,10 +5,10 @@
         <p class="recipe-about"><%= recipe.about.truncate(213)  %></p>
         <% if recipe.image.attached? %>
           <%= link_to recipe_path(recipe) do %>
-            <%= image_tag(recipe.display_image(250,200), class: "img-fluid")%>
+            <%= image_tag(recipe.display_image(250,200), class: "rounded")%>
           <% end %>
         <% else %>
-         <img src="/assets/no-image.jpg" alt="no-image" width="250" height="200">
+         <img src="/assets/no-image.jpg" alt="no-image" width="250" height="200" class="rounded">
         <% end %>
         <!-- <%= link_to image_tag("favicon.png", alt: "logo", width: "40px"),root_path, class: "logo"  if recipe.image.attached? %> -->
         <p><span class="timestamp"></p>

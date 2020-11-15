@@ -3,11 +3,13 @@
 <div class="recipe-content wrapper">
   <h2 class="page-title"><%= @page_title %></h2>
      <% if @category.nil? %>
-      <p><%= link_to "Recent",   recipes_path(option: "recent") %></p>
-      <p><%= link_to "Popular",   recipes_path(option: "popular")%></p>
+      <p class="d-inline-block"><%= link_to "Latest",   recipes_path(option: "recent") %></p>
+      <p class="d-inline-block"> | </p>
+      <p class="d-inline-block"><%= link_to "Popular",   recipes_path(option: "popular")%></p>
     <% else%>
-      <p><%= link_to "#{@category.name} / Recent",   recipe_category_path(id: @category.id, option: "recent") %></p>
-      <p><%= link_to "#{@category.name} / Popular",   recipe_category_path(id: @category.id, option: "popular") %></p>
+      <p class="d-inline-block"><%= link_to "Latest(#{@category.name})",   recipe_category_path(id: @category.id, option: "recent") %></p>
+      <p class="d-inline-block">     |     </p>
+      <p class="d-inline-block"><%= link_to "Popular(#{@category.name})",   recipe_category_path(id: @category.id, option: "popular") %></p>
     <% end %>
     <div class="wrapper grid">
         <%= render @recipes %>

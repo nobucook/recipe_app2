@@ -1,30 +1,39 @@
 <% provide(:title, @recipe.title)%>
 <div class="wrapper recipe-show">
-  <h1 class="title"><%= @recipe.title %> </h1>
+  <h1 class="title recipe_title_show"><%= @recipe.title %> </h1>
       <%= render 'like_form'%>
   <% if current_user?(@recipe.user) %>
-    <p><%= link_to "Edit", edit_recipe_path(@recipe) %></p>
+    <p class="float-right"><%= link_to "Edit", edit_recipe_path(@recipe) %></p>
   <% end %>
 
   <div class="row">
     <div class="col-md-6">
       <section class="information">
-        <p class="about">About</p>
+        <%# <p class="about">About</p> %>
         <p class="about"><%= @recipe.about %></p>
-        <%= image_tag @recipe.display_image(500, 400)  if @recipe.image.attached? %>
-        <p><%= link_to @recipe.user.name, @recipe.user %></p>
+        <% if @recipe.image.attached? %>
+          <%= image_tag @recipe.display_image(500, 400), class: "img-fluid rounded" %>
+        <% end %>
+        <div>
+        <p class="d-inline-block">Posted by</p>
+        <p class="d-inline-block"><%= link_to @recipe.user.name, @recipe.user %></p>
+        </div>
       </section>
     </div>
     <div class="col-md-6">
       <section class="information">
+      <div class="float-right row">
         <% unless @recipe.category_ids.empty? %>
-          <p>Category</p>
-          <span>
+        <div>
+          <p class="d-inline-block mr-3 col-3">Category</p>
+        </div>
+          <span class="col-9">
             <% @recipe.categories.each do |category| %>
-            <%= link_to category.name, recipe_category_path(id: category.id) %>
+            <%= link_to category.name, recipe_category_path(id: category.id), class: "btn btn-secondary btn-sm mb-1 rounded-pill" %>
             <% end %>
           </span>
         <% end %>
+        </div>
         <h2 class="ingre-title">Ingredients / 材料</h2>
         <% ingredients = @recipe.ingredients.all %>
         <% ingredients.each do |ingre| %>
@@ -45,8 +54,8 @@
     <% instructions.each do |inst| %>
       <ol class="instructions">
         <!-- <p><%= inst.no %></p> -->
-        <p><%= i %>
-        <p><%= inst.how_to %></p>
+        <p class="d-inline-block mr-2"><%= i %>.</p>
+        <p class="d-inline-block"><%= inst.how_to %></p>
         <br>
         <% i += 1%>
       </ol>

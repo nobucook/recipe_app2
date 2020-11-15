@@ -4,8 +4,8 @@ class RecipesController < ApplicationController
 
   def index
     if params[:option] == "recent" || params[:option] == nil
-      @page_title = "Recent Recipes"
-      @recipes = Recipe.all.order(created_at: :desc).paginate(page: params[:page])
+      @page_title = "Latest Recipes"
+      @recipes = Recipe.all.order(created_at: :desc).paginate(page: params[:page], per_page: 36)
     elsif params[:option] == "popular"
       @page_title = "Popular Recipes"
       # recipes_hash = Recipe.joins(:passive_likes).group("liked_id").order('count_all DESC', created_at: :desc).count

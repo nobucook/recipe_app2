@@ -8,8 +8,8 @@ class CategoriesController < ApplicationController
   def recipe
     if params[:option] == "recent" || params[:option] == nil
       @category = Category.find(params[:id]) 
-      @recipes = @category.recipes.order(created_at: :desc).paginate(page: params[:page])
-      @page_title = "Recent #{@category.name} Recipes"
+      @recipes = @category.recipes.order(created_at: :desc).paginate(page: params[:page], per_page: 36)
+      @page_title = "Latest #{@category.name} Recipes"
       render template: "recipes/index"
     elsif
       @category = Category.find(params[:id]) 

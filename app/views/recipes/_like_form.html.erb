@@ -1,14 +1,18 @@
-<div id = "like_form"> 
-  <% if logged_in?%>
-    <%if current_user.liking?(@recipe) %>
-      <%=render"unlike"%>
-    <%else%>
-      <%=render"like"%>
-    <%end%>
-  <% else %>
-    <i class="far fa-heart like-btn" ></i>
-  <% end%>
-     <% if @recipe.likers.count > 0%>
-        <div><%= @recipe.likers.count %></div>
+    <div  id = "like_form"  class="d-inline-block  float-right">
+      <% if logged_in?%>
+          <%if current_user.liking?(@recipe) %>
+              <%=render"unlike"%>
+            <%else%>
+              <%=render"like"%>
+          <%end%>
+      <% else %>
+          <i class="far fa-heart like-btn d-inline-block" ></i>
+      <% end%>
+
+      <% if @recipe.likers.count > 0%>
+          <p class="d-inline-block"><%= @recipe.likers.count %></p>
+      <% else %>
+      <div class="d-inline-block mr-2"></div>
       <%end%>
-  </div>
+    </div>
+  

@@ -1,0 +1,15 @@
+<div class="row"> 
+  <div class="col-sm-8 float-left">
+    <%= render 'category'%>
+  </div>
+  <div class="col-sm-4 d-flex justify-content-end align-middle">
+    <% if current_user?(@recipe.user) %>
+      <div class="d-inline-block align-middle">
+          <%= link_to edit_recipe_path(@recipe), class:"align-middle mt-1" do%>
+            <p class="align-middle mb-0 mr-2">Edit</p>
+          <% end %>
+      </div>
+    <% end %>
+    <%= render'like_form'%>
+  </div>
+</div>

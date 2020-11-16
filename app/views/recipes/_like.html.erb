@@ -1,3 +1,4 @@
+<div class="d-inline-block">
 <% @recipe ||= recipe%>
   <%= form_for(current_user.active_likes.build) do |f| %>
     <div><%= hidden_field_tag :liked_id, @recipe.id%></div>
@@ -5,3 +6,4 @@
       <i class="far fa-heart like-btn" ></i>
     <% end %>
   <% end %>
+</div>

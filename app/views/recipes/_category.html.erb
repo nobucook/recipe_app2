@@ -1,0 +1,12 @@
+<% unless @recipe.category_ids.empty? %>
+      <div class="d-inline-block mr-2">
+        <p>Category</p>
+      </div>
+      <div class="d-inline-block">
+        <span>
+          <% @recipe.categories.each do |category| %>
+          <%= link_to category.name, recipe_category_path(id: category.id), class: "category-button" %>
+          <% end %>
+        </span>
+      </div>
+  <% end %>

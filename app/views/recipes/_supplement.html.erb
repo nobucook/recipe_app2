@@ -5,8 +5,8 @@
   <div class="col-sm-4 d-flex justify-content-end align-middle">
     <% if current_user?(@recipe.user) %>
       <div class="d-inline-block align-middle">
-          <%= link_to edit_recipe_path(@recipe), class:"align-middle mt-1" do%>
-            <p class="align-middle mb-0 mr-2">Edit</p>
+          <%= link_to edit_recipe_path(@recipe), class:"align-middle mr-2" do%>
+          Edit
           <% end %>
       </div>
     <% end %>

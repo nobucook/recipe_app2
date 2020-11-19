@@ -1,10 +1,12 @@
+
 <div class="nested-fields form-row">
   <%= f.hidden_field :_destroy %>
-  <div class="form-group col-1">
+  <div class="form-group col-2 col-md-1">
     <% f.label :no, "No." %>
-    <%= f.text_field :no, class: 'form-control'%>
+    <%= f.telephone_field :no, class: 'form-control' , value: "#{@order_number}" %>
+    <% @order_number += 1 %>
   </div>
-  <div class="form-group col-10">
+  <div class="form-group col-9 col-md-10 ">
       <% f.label :how_to, "instruction / 作り方" %>
       <%= f.text_field :how_to, class: 'form-control' %>
   </div>
@@ -13,3 +15,4 @@
   </div>
 
 </div>
+

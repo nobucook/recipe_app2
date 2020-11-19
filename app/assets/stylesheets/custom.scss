@@ -37,6 +37,7 @@ section {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  color: $base-text-color;
 }
 
 h1 {
@@ -79,15 +80,22 @@ a:hover {
   padding-bottom: 12px;
   border-top: 5px $gray-medium-light solid;
   border-bottom: 1px $gray-medium-light solid;
-
+  
 	.nav-item{
     margin: 0 25px 0 20px;
 		a{
-			color: $gray-medium-light;
+      color: $gray-medium-light;
       text-decoration: none;
       font-size: 15px;
     }
-    }
+  }
+      i.fas::before, i.far::before {
+        margin-right: 3px;
+      }
+      
+      i.fas i.far {
+       color: $base-text-color;
+      }
   }
 
 .logo {
@@ -103,13 +111,6 @@ a:hover {
   }
 }
 
-i.fas::before, i.far::before {
-  margin-right: 3px;
-}
-
-i.fas i.far {
- color: $base-text-color;
-}
 
 
 /* home  ホーム*/
@@ -172,16 +173,16 @@ input {
     
     /* like ライク関係 */
     .like-btn {
-      width: 25px;
-      height: 30px;
+      // width: 21px;
+      // height: 20px;
       font-size: 20px;
       color: #808080; 
       vertical-align: middle;
     }
     
     .unlike-btn {
-      width: 30px;
-      height: 30px;
+      // width: 21px;
+      // height: 20px;
       font-size: 20px;
       color: #e54747;
       vertical-align: middle;
@@ -190,22 +191,23 @@ input {
     #like_form {
       align-items: baseline;
       i {
-        margin-right: 4px;
+        // margin-right: 4px;
         vertical-align: middle;
       }
       p {
         vertical-align: middle;
       }
+      a {
+        color: $base-text-color;
+        .edit {
+          font-size: 2rem;
+        }
+      }
       button {
-        width: 30px;
-        height: 30px;
+        vertical-align: middle;
       }
     }
     
-    .likes_count {
-      height: 30px;
-    }
-
     /* sidebar */
     
     .recipe_title_show {
@@ -470,16 +472,19 @@ input {
           }
         }
         
-        .pagination li {
-          margin: 0 3px;
-          border:$base-text-color 1px solid;
-          border-radius: 3px;
-          padding: 0 5px;
-          &:hover {
-            box-shadow: 0 0 3px $base-text-color;
+        .pagination {
+          margin: 10px 0;
+          li {
+            margin: 0 3px;
+            border:$base-text-color 1px solid;
+            border-radius: 3px;
+            padding: 0 5px;
+            &:hover {
+              box-shadow: 0 0 3px $base-text-color;
+            }
           }
         }
-        
+          
         /* miscellaneous その他*/
         
         .debug_dump {

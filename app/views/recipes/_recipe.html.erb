@@ -15,42 +15,43 @@
           <p>Posted <%= time_ago_in_words(recipe.created_at) %> ago.</p>
         <p class="user"><%= link_to recipe.user.name, recipe.user %></p>
 
-          <div id = "like_form" class="d-flex justify-content-end"> 
-          <div>
+          <div id = "like_form" class="d-flex justify-content-end align-middle mb-1"> 
+          <div class=" d-inline-block mr-1">
           <% if logged_in? %>
-              <% if current_user.liking?(recipe)%>                
+            <% if current_user.liking?(recipe)%>                
                 <%= form_for(current_user.active_likes.find_by(liked_id: recipe.id),
                       html: {method: :delete}) do |f| %>
                   <%= f.button type: "submit" do%>
-                  <i class="fas fa-heart unlike-btn " ></i>
+                    <i class="fas fa-heart unlike-btn " ></i>
                   <% end %>
                 <% end %>
-              <% else %>
-                <%= form_for(current_user.active_likes.build) do |f| %>
-                  <div><%= hidden_field_tag :liked_id, recipe.id%></div>
-                  <%= f.button type: "submit" do%>
+            <% else %>
+              <%= form_for(current_user.active_likes.build) do |f| %>
+                <div><%= hidden_field_tag :liked_id, recipe.id%></div>
+                <%= f.button type: "submit" do%>
                   <i class="far fa-heart like-btn" ></i>
-                  <% end %>
                 <% end %>
-                <% end %>
+              <% end %>
+            <% end %>
            <% else %>
                <i class="far fa-heart like-btn" ></i>
            <% end %>
            </div>
-           <div class="likes_count">
+
+           <div class="likes_count d-inline-block align-middle">
            <% if recipe.likers.count > 0%>
-                 <p><%= recipe.likers.count %></p>
+                 <a class="align-middle "><%= recipe.likers.count %></a>
            <% else %>
-            <div class="mr-1"></div>
+            <p style="margin-right: 7px;"></p>
            <%end%>
            </div>
           </div>
           <% if current_user?(recipe.user) %>
-          <p class="delete"><%= link_to "Delete", recipe, method: :delete,
+          <p class="delete" style="height: 13px;"><%= link_to "Delete", recipe, method: :delete,
                                          data: { confirm: "You sure?" } %></p>
           <p><%= link_to "Edit", edit_recipe_path(recipe) %></p>
           <% else %>
-          <p style="margin-bottom: 13px;"></p>
+          <p style="margin-bottom: 16px;"></p>
           <% end %>
         </span>
     </div>

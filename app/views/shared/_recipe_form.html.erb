@@ -1,4 +1,4 @@
-<div id="post-recipe" >
+_<div id="post-recipe" >
     <h1>Post Recipe/レシピの投稿</h1>
     <%= form_with model: @recipe,local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
@@ -27,7 +27,7 @@
       </fieldset>
       </div>
 
-      <div class="col-md-6 row">
+      <div class="col-md-6">
         <fieldset>
           <legend class="row">
             <%# <div class="row"> %>
@@ -52,6 +52,7 @@
             <p class="col-10">instruction / 作り方</p>
           </div>
           </legend>
+          <% @order_number = 1 %>
             <%= f.fields_for :instructions do |instructions_form|%>
               <%= render "shared/instruction_fields", f: instructions_form %>
             <% end %>
@@ -59,7 +60,7 @@
               <%= link_to_add_fields "Add Instruction / 工程追加", f, :instructions %>
             </div>
         </fieldset>
-              <%= f.submit yield(:button_text), class: "btn btn-dark col-4 offset-4" %>
+              <%= f.submit yield(:button_text), class: "btn btn-dark col-6 offset-3" %>
           <% end %>
         </div>
 

@@ -86,7 +86,7 @@ class RecipesInterfaceTest < ActionDispatch::IntegrationTest
     assert_match amount, response.body
     assert_match no.to_s, response.body
     assert_match how_to, response.body
-    assert_select 'p', text: 'Edit'
+    assert_match 'Edit', response.body
 
     #レシピの編集
     get edit_recipe_path(@recipe)

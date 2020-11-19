@@ -8,7 +8,7 @@
  
    <div class="row">
     <div class="col-md-6">
-      <section class="information">
+      <section class="information mt-2">
         <%# <p class="about">About</p> %>
         <% if @recipe.image.attached? %>
           <%= image_tag @recipe.display_image(540, 400), class: "img-fluid rounded" %>

@@ -3,9 +3,7 @@
 <div class="recipe-content wrapper">
   <h2 class="page-title"><%= @page_title %></h2>
      <% if @category.nil? %>
-      <p class="d-inline-block"><%= link_to "Latest",   recipes_path(option: "recent") %></p>
-      <p class="d-inline-block"> | </p>
-      <p class="d-inline-block"><%= link_to "Popular",   recipes_path(option: "popular")%></p>
+      <p class="d-inline-block"><%= link_to "Latest",   recipes_path(option: "recent") %> | <%= link_to "Popular",   recipes_path(option: "popular")%></p>
     <% else%>
       <p class="d-inline-block"><%= link_to "Latest(#{@category.name})",   recipe_category_path(id: @category.id, option: "recent") %></p>
       <p class="d-inline-block">     |     </p>

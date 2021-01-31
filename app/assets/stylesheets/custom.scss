@@ -16,7 +16,7 @@ $gray-medium-light: #eaeaea;
 
 .body {
   position: relative;
-  margin-top: 90px;
+  margin-top: 70px;
   margin-bottom: 70px;
 }
 
@@ -152,6 +152,41 @@ header {
   color: #fff;
   .home-bg {
     vertical-align: center;
+  }
+}
+
+/* concept  コンセプト*/
+
+.concept {
+  position: relative;
+  height: 120px;
+  img {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    margin-bottom: 0;
+    color: white;
+    text-shadow: 2px 0 5px $base-text-color;
+    line-height: 2rem;
+
+    a {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      font-size: 1.7em;
+    }
   }
 }
 

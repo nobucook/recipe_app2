@@ -1,15 +1,15 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top bg-light " style="background-color: #e3f2fd;">
-    <%= link_to root_path, class: "logo" do%>
-      <%= image_tag("favicon.png", alt: "logo", width: "40px")%> 
+    <%= link_to root_path, class: "logo item" do%>
+      <%= image_tag("favicon.png", alt: "logo", width: "40px")%>
       Recipes from Japan
     <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse item" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-0">
         <li class="nav-item">
           <%= link_to recipes_path, {class: "nav-link"} do %>
           <%# <span class="glyphicon glyphicon-cutlery" aria-hidden="true">Recipes</span> %>
@@ -24,10 +24,10 @@
           <i class="fas fa-th">Category</i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <% Category.all.each do |category| %> 
+           <% Category.all.each do |category| %>
                 <%# <a class="dropdown-item nav-link", display> %>
                 <%= link_to recipe_category_path(id: category.id), {class: "dropdown-item nav-link nav-link"} do %>
-                  <%= category.name%>
+                  <span><%= category.name%></span>
                 <% end %>
                 <%# </a> %>
            <% end %>
@@ -50,22 +50,16 @@
         <i class="fas fa-user">Account</i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item">
-            <%= link_to current_user, {class: "nav-link"} do %>
+            <%= link_to current_user, {class: "nav-link dropdown-item"} do %>
               <i class="fas fa-address-card">Profile</i>
             <% end %>
-          </a>   
-          <a class="dropdown-item">
-            <%= link_to edit_user_path(current_user), {class: "nav-link"} do %>
+            <%= link_to edit_user_path(current_user), {class: "nav-link dropdown-item"} do %>
               <i class="fas fa-user-cog">Setings</i>
             <% end %>
-          </a>   
            <div class="dropdown-divider"></div>
-          <a class="dropdown-item">
-            <%= link_to logout_path, {method: :delete, class: "nav-link"} do %>
+            <%= link_to logout_path, {method: :delete, class: "nav-link dropdown-item"} do %>
               <i class="fas fa-sign-out-alt">Log&thinsp;out</i>
             <% end %>
-          </a>   
          </div>
       </li>
       <% else %>

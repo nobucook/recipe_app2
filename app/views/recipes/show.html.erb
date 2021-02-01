@@ -5,23 +5,24 @@
   <%= @recipe.title %>
   </h1>
   <%= render 'supplement'%>
- 
+
    <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <section class="information mt-2">
         <%# <p class="about">About</p> %>
         <% if @recipe.image.attached? %>
           <%= image_tag @recipe.display_image(540, 400), class: "img-fluid rounded" %>
         <% end %>
-        <p class="about mt-2"><%= @recipe.about %></p>
-        <div class="float-right mr-4">
-        <p class="d-inline-block">Posted by</p>
-        <p class="d-inline-block"><%= link_to @recipe.user.name, @recipe.user %></p>
-        </div>
+        <%#<p class="recipe-about mt-2"><%= @recipe.about %><%#</p>%>
       </section>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5 offset-md-2">
       <section class="information">
+        <p class="recipe-about mt-2"><%= @recipe.about %></p>
+        <div class="posted-by mr-4">
+          <p class="d-inline-block mr-1">Posted by</p>
+         <p class="d-inline-block"><%= link_to @recipe.user.name, @recipe.user %></p>
+        </div>
         <h2 class="ingre-title">Ingredients / 材料</h2>
         <% ingredients = @recipe.ingredients.all %>
         <% ingredients.each do |ingre| %>
@@ -34,7 +35,7 @@
       </section>
     </div>
   </div>
-  <div class="row">
+  <div class="row instruction">
     <div class="col-md-12 instructions">
     <h2 class="ingre-title">Instruction / 作り方</h2>
     <% instructions = @recipe.instructions.all %>

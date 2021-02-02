@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # get 'ingredients/destroy'
   # get 'sessions/new'
   # get 'users/new'
-  get root 'static_pages#home'
+  get root 'recipes#index'
   get '/about', to:'static_pages#about'
   get '/contact', to:'static_pages#contact'
   get '/signup', to: 'users#new'

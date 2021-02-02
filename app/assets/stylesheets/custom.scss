@@ -562,6 +562,7 @@ a.remove_fields {
 }
 
 .pagination {
+  justify-content: center;
   margin: 10px 0;
   li {
     margin: 0 3px;
@@ -626,5 +627,14 @@ a.remove_fields {
     p a {
       font-size: 1em;
     }
+  }
+}
+
+.footer__copyright {
+  color: $base-text-color;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  span {
+    font-family: "Times New Roman", "Times";
   }
 }

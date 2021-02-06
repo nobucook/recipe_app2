@@ -40,6 +40,7 @@ section {
   &:hover {
     background-color: black;
     border-color: black;
+    color: white;
   }
 }
 
@@ -49,6 +50,16 @@ input[type="submit"] {
   width: 70%;
   margin: 30px auto;
   // font-size: 1.2vw;
+}
+
+.alert {
+  text-align: center;
+}
+
+.alert-success {
+  background-color: $gray-medium-light;
+  border-color: transparent;
+  color: $base-text-color;
 }
 
 /* typography 文字列*/

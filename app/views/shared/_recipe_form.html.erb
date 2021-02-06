@@ -1,11 +1,11 @@
 <div id="post-recipe" >
-    <h1>Post Recipe/レシピの投稿</h1>
+    <h1 class="title recipe_title_show">Post Recipe / レシピの投稿</h1>
     <%= form_with model: @recipe,local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
     <div class="wrapper row">
-      <div class="col-md-6">
-      <fieldset>
-        <legend>Title / About Recipe</legend>
+      <div class="col-lg-5">
+       <fieldset>
+        <legend></legend>
           <%= f.label :title %>
           <%= f.text_field :title, class: 'form-control' %>
 
@@ -17,9 +17,9 @@
           <%= f.file_field :image %>
         </span>
 
-        <legend>Categories</legend>
+        <legend class="post-category-title">Categories</legend>
           <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name,  include_hidden: false ) do |category| %>
-            <%= category.label do %>
+            <%= category.label class:"ctgry-checkbox" do %>
               <%= category.text %>
               <%= category.check_box %>
             <%end%>
@@ -27,24 +27,24 @@
       </fieldset>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-lg-5 offset-lg-2">
         <fieldset>
           <legend class="row">
             <%# <div class="row"> %>
-              <div class="col-7">ingredient/原材料</div>
-              <div class="col-5">amount/分量</div>
+              <div class="post-ingre col-7">ingredient/原材料</div>
+              <div class="post-ingre col-5">amount/分量</div>
             <%# </div> %>
           </legend>
           <%= f.fields_for :ingredients do |ingredients_form| %>
             <%= render "shared/ingredient_fields", f: ingredients_form %>
           <% end %>
-          <div>
+          <div class="add_ingre_btn">
             <%= link_to_add_fields "Add Ingredients / 原材料の追加", f, :ingredients %>
           </div>
         </fieldset>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-12">
         <fieldset>
           <legend>
           <div class="row">
@@ -56,11 +56,11 @@
             <%= f.fields_for :instructions do |instructions_form|%>
               <%= render "shared/instruction_fields", f: instructions_form %>
             <% end %>
-            <div>
+            <div class="add_inst_btn">
               <%= link_to_add_fields "Add Instruction / 工程追加", f, :instructions %>
             </div>
         </fieldset>
-              <%= f.submit yield(:button_text), class: "btn btn-dark col-6 offset-3" %>
+              <%= f.submit yield(:button_text), class: "btn btn-dark col-lg-2 col-lg-offset-5 col-4 offset-4" %>
           <% end %>
         </div>
 

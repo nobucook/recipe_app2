@@ -36,6 +36,7 @@ section {
 .btn {
   background-color: $base-text-color;
   border-color: $base-text-color;
+  color: white;
   &:hover {
     background-color: black;
     border-color: black;
@@ -256,6 +257,11 @@ input[type="tel"] {
 .sign-up-form,
 .user-edit {
   margin: 0 auto;
+}
+
+.easy-login {
+  margin: 0 auto;
+  display: table;
 }
 
 input {

@@ -525,12 +525,12 @@ span.picture {
   // max-width: 300px;
   // min-width: 250px;
   .recipe-title {
-    text-align: center;
+    text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
     // font-weight: bold;
     font-size: 18px;
-    height: 3.6rem;
+    height: 2.4rem;
     padding: 0px 0px;
     // word-wrap: normal;
     word-break: break-word;
@@ -538,7 +538,7 @@ span.picture {
   .recipe-about {
     padding: 5px 0px;
     margin: 8px 0;
-    height: 4rem;
+    height: 3rem;
     word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;

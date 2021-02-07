@@ -14,11 +14,14 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
+body {
+  font-family: "Barlow Condensed", "Noto Sans JP", sans-serif;
+}
+
 .body {
   position: relative;
   margin-top: 70px;
   margin-bottom: 0px;
-  font-family: "Barlow Condensed", "Noto Sans JP", sans-serif;
 }
 
 section {
@@ -173,7 +176,7 @@ header {
   margin-right: 10px;
   font-size: 23px;
   color: rgba(0, 0, 0, 0.5);
-  letter-spacing: -1px;
+  // letter-spacing: -1px;
   font-weight: bold;
   &:hover {
     color: rgba(0, 0, 0, 0.7);

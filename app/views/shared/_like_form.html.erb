@@ -1,4 +1,4 @@
-  <div  id = "like_form<%=recipe.id%>"  class="d-inline-block  float-right like_form">
+  <div  id = "like_form<%=recipe.id%>"  class="d-inline-block like_form">
       <% if logged_in?%>
           <%if current_user.liking?(recipe) %>
               <%= render partial: "shared/unlike", locals: {recipe: recipe}%>

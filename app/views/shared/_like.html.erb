@@ -1,0 +1,8 @@
+<div class="d-inline-block">
+  <%= form_for(current_user.active_likes.build, remote: true) do |f| %>
+    <div><%= hidden_field_tag :liked_id, recipe.id%></div>
+    <%= f.button type: "submit" do%>
+      <i class="far fa-heart like-btn" ></i>
+    <% end %>
+  <% end %>
+</div>

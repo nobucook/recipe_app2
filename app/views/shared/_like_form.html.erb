@@ -1,0 +1,11 @@
+  <div  id = "like_form<%=recipe.id%>"  class="d-inline-block  float-right like_form">
+      <% if logged_in?%>
+          <%if current_user.liking?(recipe) %>
+              <%= render partial: "shared/unlike", locals: {recipe: recipe}%>
+            <%else%>
+              <%= render partial: "shared/like", locals: {recipe: recipe}%>
+          <%end%>
+      <% else %>
+          <i class="far fa-heart like-btn d-inline-block" ></i>
+      <% end%>
+  </div>

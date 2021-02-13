@@ -1,9 +1,0 @@
-<div class="d-inline-block">
-<% @recipe ||= recipe %>
-  <%= form_for(current_user.active_likes.find_by(liked_id: @recipe.id),
-          html: {method: :delete}) do |f| %>
-    <%= f.button type: "submit" do%>
-      <i class="fas fa-heart unlike-btn" ></i>
-    <% end %>
-  <% end %>
-</div>

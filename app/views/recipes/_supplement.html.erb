@@ -1,15 +1,16 @@
-<div class="row"> 
+<div class="row">
   <div class="col-sm-8 float-left">
     <%= render 'category'%>
   </div>
   <div class="col-sm-4 d-flex justify-content-end align-middle">
-    <% if current_user?(@recipe.user) %>
+    <% if current_user?(recipe.user) %>
       <div class="d-inline-block align-middle">
-          <%= link_to edit_recipe_path(@recipe), class:"align-middle mr-2" do%>
+          <%= link_to edit_recipe_path(recipe), class:"align-middle mr-2" do%>
           Edit
           <% end %>
       </div>
     <% end %>
-    <%= render'like_form'%>
+    <%= render partial: 'shared/like_form', locals: {recipe: recipe}%>
+    <%= render partial: 'shared/likers_count', locals: {recipe: recipe}%>
   </div>
 </div>

@@ -1,0 +1,7 @@
+<div id="likers<%=recipe.id%>" class="d-inline-block likers_count" >
+  <% if recipe.likers.count > 0%>
+    <a class="align-middle"><%= recipe.likers.count %></a>
+  <% else %>
+    <div class="mr-2"></div>
+  <%end%>
+</div>

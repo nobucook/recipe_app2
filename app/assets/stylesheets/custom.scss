@@ -1,5 +1,5 @@
 // @import "bootstrap-sprockets";
-@import "bootstrap";
+// @import "bootstrap";
 
 /* mixins, variables, etc. */
 
@@ -351,6 +351,29 @@ input {
   }
 }
 
+.like_div {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}
+
+.like_display {
+  position: relative;
+  width: 20%;
+}
+
+.like_form {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.likers_count {
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+
 /* sidebar */
 
 .recipe_title_show {
@@ -470,13 +493,13 @@ textarea {
     padding: 5px 0;
   }
 }
-.timestamp {
-  // color: $gray-light;
-  color: #bbb;
-  display: block;
-  margin-left: 60px;
-  font-size: 10px;
-}
+// .timestamp {
+//   // // color: $gray-light;
+//   // color: #bbb;
+//   display: block;
+//   margin: 0px auto;
+//   font-size: 10px;
+// }
 
 aside {
   textarea {
@@ -562,7 +585,8 @@ span.picture {
     object-fit: cover;
   }
   .timestamp {
-    margin: 1rem auto;
+    // margin: 1rem auto;
+    margin-top: 10px;
   }
   p {
     font-size: 11px;
@@ -572,7 +596,12 @@ span.picture {
     padding: 0.7em;
   }
   .delete {
-    float: right;
+    height: 13px;
+  }
+  &_fix {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 }
 

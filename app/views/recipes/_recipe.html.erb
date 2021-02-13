@@ -11,49 +11,56 @@
          <img src="/assets/no-image.jpg" alt="no-image" width="250" height="200" class="rounded">
         <% end %>
         <!-- <%= link_to image_tag("favicon.png", alt: "logo", width: "40px"),root_path, class: "logo"  if recipe.image.attached? %> -->
-        <p><span class="timestamp"></p>
-          <p>Posted <%= time_ago_in_words(recipe.created_at) %> ago.</p>
+        <p class="timestamp">Posted <%= time_ago_in_words(recipe.created_at) %> ago.</p>
         <p class="user"><%= link_to recipe.user.name, recipe.user %></p>
 
-          <div id = "like_form" class="d-flex justify-content-end align-middle mb-1"> 
-          <div class=" d-inline-block mr-1">
-          <% if logged_in? %>
-            <% if current_user.liking?(recipe)%>                
-                <%= form_for(current_user.active_likes.find_by(liked_id: recipe.id),
-                      html: {method: :delete}) do |f| %>
-                  <%= f.button type: "submit" do%>
-                    <i class="fas fa-heart unlike-btn " ></i>
+          <!--<div id = "like_form" class="d-flex justify-content-end align-middle mb-1">
+            <div class=" d-inline-block mr-1">
+              <% if logged_in? %>
+                  <% if current_user.liking?(recipe)%>
+                      <%= form_for(current_user.active_likes.find_by(liked_id: recipe.id),
+                            html: {method: :delete}, remote: true) do |f| %>
+                        <%= f.button type: "submit" do%>
+                          <i class="fas fa-heart unlike-btn " ></i>
+                        <% end %>
+                      <% end %>
+                    <% else %>
+                      <%= form_for(current_user.active_likes.build, remote: true) do |f| %>
+                        <div><%= hidden_field_tag :liked_id, recipe.id%></div>
+                          <%= f.button type: "submit" do%>
+                            <i class="far fa-heart like-btn" ></i>
+                          <% end %>
+                      <% end %>
                   <% end %>
-                <% end %>
-            <% else %>
-              <%= form_for(current_user.active_likes.build) do |f| %>
-                <div><%= hidden_field_tag :liked_id, recipe.id%></div>
-                <%= f.button type: "submit" do%>
+                <% else %>
                   <i class="far fa-heart like-btn" ></i>
-                <% end %>
               <% end %>
-            <% end %>
-           <% else %>
-               <i class="far fa-heart like-btn" ></i>
-           <% end %>
-           </div>
+            </div>
 
-           <div class="likes_count d-inline-block align-middle">
-           <% if recipe.likers.count > 0%>
-                 <a class="align-middle "><%= recipe.likers.count %></a>
-           <% else %>
-            <p style="margin-right: 7px;"></p>
-           <%end%>
-           </div>
+            <div class="likes_count d-inline-block align-middle">
+              <% if recipe.likers.count > 0%>
+                    <a class="align-middle "><%= recipe.likers.count %></a>
+              <% else %>
+                <p style="margin-right: 7px;"></p>
+              <%end%>
+            </div>
+          </div>-->
+          <div class="like_div">
+            <div class="like_display">
+              <%= render partial: 'shared/like_form', locals: {recipe: recipe}%>
+              <%= render partial: 'shared/likers_count', locals: {recipe: recipe}%>
+            </div>
           </div>
-          <% if current_user?(recipe.user) %>
-          <p class="delete" style="height: 13px;"><%= link_to "Delete", recipe, method: :delete,
-                                         data: { confirm: "You sure?" } %></p>
-          <p><%= link_to "Edit", edit_recipe_path(recipe) %></p>
-          <% else %>
-          <p style="margin-bottom: 16px;"></p>
-          <% end %>
-        </span>
+
+          <div class="recipe_fix">
+            <% if current_user?(recipe.user) %>
+                <p class="delete"><%= link_to "Delete", recipe, method: :delete,
+                                              data: { confirm: "You sure?" } %></p>
+                <p><%= link_to "Edit", edit_recipe_path(recipe) %></p>
+              <% else %>
+                <p style="margin-bottom: 13px;"></p>
+            <% end %>
+          </div>
     </div>
-</div>
+  </div>
 </ol>

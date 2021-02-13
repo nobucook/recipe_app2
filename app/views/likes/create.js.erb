@@ -1,0 +1,2 @@
+$("#like_form<%=@recipe.id%>").html("<%= escape_javascript(render partial: 'shared/unlike.html.erb', locals: {recipe: @recipe}) %>");
+$("#likers<%=@recipe.id%>").html("<%= escape_javascript(render partial: 'shared/likers_count.html.erb', locals: {recipe: @recipe}) %>");

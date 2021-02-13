@@ -4,7 +4,8 @@
   <h1 class="title recipe_title_show">
   <%= @recipe.title %>
   </h1>
-  <%= render 'supplement'%>
+  <%= render partial: 'supplement', locals: {recipe: @recipe}%>
+
 
    <div class="row">
     <div class="col-md-5">

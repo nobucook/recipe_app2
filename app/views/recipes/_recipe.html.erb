@@ -48,7 +48,9 @@
           <div class="like_div">
             <div class="like_display">
               <%= render partial: 'shared/like_form', locals: {recipe: recipe}%>
-              <%= render partial: 'shared/likers_count', locals: {recipe: recipe}%>
+              <div id="likers<%=recipe.id%>" class="d-inline-block likers_count" >
+                <%= render partial: 'shared/likers_count', locals: {recipe: recipe}%>
+              </div>
             </div>
           </div>
 

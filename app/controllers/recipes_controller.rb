@@ -57,7 +57,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
     flash[:success] = "Recipe deleted / レシピを削除しました。"
-    redirect_to request.referrer || root_url
+    redirect_to root_url
   end
 
   private
@@ -68,7 +68,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :about, :image, :_destroy,
-                              category_ids: [], 
+                              category_ids: [],
                               instructions_attributes: [:id, :no, :how_to, :_destroy],
                               ingredients_attributes: [:id, :ingre, :amount, :_destroy]
                             )

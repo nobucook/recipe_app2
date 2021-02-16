@@ -1,8 +1,7 @@
-<div id="post-recipe" >
-    <h1 class="title recipe_title_show">Post Recipe / レシピの投稿</h1>
+    <h1 class="recipe_title_show">Post Recipe / レシピの投稿</h1>
     <%= form_with model: @recipe,local: true do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-    <div class="wrapper row">
+    <div class="row recipe_form__field">
       <div class="col-lg-5">
        <fieldset>
         <legend></legend>
@@ -17,9 +16,9 @@
           <%= f.file_field :image %>
         </span>
 
-        <legend class="post-category-title">Categories</legend>
+        <legend>Categories</legend>
           <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name,  include_hidden: false ) do |category| %>
-            <%= category.label class:"ctgry-checkbox" do %>
+            <%= category.label class:"recipe_form__ctgry_checkbox" do %>
               <%= category.text %>
               <%= category.check_box %>
             <%end%>
@@ -48,8 +47,8 @@
         <fieldset>
           <legend>
           <div class="row">
-            <p class="col-1">No.</p>
-            <p class="col-10">instruction / 作り方</p>
+            <div class="col-1">No.</div>
+            <div class="col-10">instruction / 作り方</div>
           </div>
           </legend>
           <% @order_number = 1 %>
@@ -63,11 +62,7 @@
               <%= f.submit yield(:button_text), class: "btn btn-dark col-4 offset-4 col-lg-2 col-lg-offset-5" %>
           <% end %>
         </div>
-
-
-
-          </div><!-- wrapper -->
-        </div><!-- #post-recipe -->
+    </div>
 
         <script type="text/javascript">
           $("#recipe_image").bind("change", function() {

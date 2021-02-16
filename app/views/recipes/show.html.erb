@@ -1,7 +1,7 @@
 <% recipe ||= @recipe%>
 <% provide(:title, @recipe.title)%>
-<div class="wrapper recipe-show">
-  <h1 class="title recipe_title_show">
+<div class="recipe-show">
+  <h1 class="recipe-show__title">
   <%= @recipe.title %>
   </h1>
   <%= render partial: 'supplement', locals: {recipe: @recipe}%>
@@ -12,24 +12,24 @@
       <section class="information mt-2">
         <%# <p class="about">About</p> %>
         <% if @recipe.image.attached? %>
-          <%= image_tag @recipe.display_image(540, 400), class: "img-fluid rounded" %>
+          <%= image_tag @recipe.display_image(540, 400), class: "img-fluid rounded recipe-show__img" %>
         <% end %>
         <%#<p class="recipe-about mt-2"><%= @recipe.about %><%#</p>%>
       </section>
     </div>
     <div class="col-md-5 offset-md-2">
       <section class="information">
-        <p class="recipe-about mt-2"><%= @recipe.about %></p>
-        <div class="posted-by mr-4">
+        <p class="recipe-show__about mt-2"><%= @recipe.about %></p>
+        <div class="recipe-show__posted-by mr-4">
           <p class="d-inline-block mr-1">Posted by</p>
          <p class="d-inline-block"><%= link_to @recipe.user.name, @recipe.user %></p>
         </div>
-        <h2 class="ingre-title">Ingredients / 材料</h2>
+        <h2 class="ingre__title">Ingredients / 材料</h2>
         <% ingredients = @recipe.ingredients.all %>
         <% ingredients.each do |ingre| %>
-          <ol class="ingredients">
-            <p class="ingre"><%= ingre.ingre %></p>
-            <p class="amount"><%= ingre.amount %></p>
+          <ol class="ingre__ol">
+            <p class="ingre__item"><%= ingre.ingre %></p>
+            <p class="ingre__amount"><%= ingre.amount %></p>
             <br>
           </ol>
         <% end %>
@@ -37,15 +37,16 @@
     </div>
   </div>
   <div class="row instruction">
-    <div class="col-md-12 instructions">
-    <h2 class="ingre-title">Instruction / 作り方</h2>
+    <div class="col-md-12">
+    <h2 class="instruction__title">Instruction / 作り方</h2>
     <% instructions = @recipe.instructions.all %>
     <% i = 1%>
     <% instructions.each do |inst| %>
       <ol class="instructions">
         <!-- <p><%= inst.no %></p> -->
         <p class="d-inline-block mr-2"><%= i %>.</p>
-        <p class="d-inline-block"><%= inst.how_to %></p>
+        <!--<p class="d-inline-block"><%= inst.how_to %></p>-->
+        <p class="d-inline-block"><%= safe_join(inst.how_to.split("\n"), tag(:br)) %></p>
         <br>
         <% i += 1%>
       </ol>

@@ -1,7 +1,7 @@
 <% provide(:title, "Recipes") %>
 
-<div class="recipe-content wrapper">
-  <h2 class="page-title"><%= @page_title %></h2>
+<div class="recipe-index__content">
+  <h2 class="recipe-index__title"><%= @page_title %></h2>
      <% if @category.nil? %>
       <p class="d-inline-block"><%= link_to "Latest",   recipes_path(option: "recent") %> | <%= link_to "Popular",   recipes_path(option: "popular")%></p>
     <% else%>
@@ -9,9 +9,8 @@
       <p class="d-inline-block">     |     </p>
       <p class="d-inline-block"><%= link_to "Popular(#{@category.name})",   recipe_category_path(id: @category.id, option: "popular") %></p>
     <% end %>
-    <div class="wrapper grid">
+    <div class="grid">
         <%= render @recipes %>
     </div>
     <%= will_paginate @recipes %>
 </div>
-  

@@ -1,18 +1,18 @@
 <ol id="recipe-<%= recipe.id %>" class="item">
   <div class="recipe">
-    <div class="recipe-detail">
-        <p class="recipe-title"><%= link_to  recipe.title , recipe_path(recipe) %></p>
-        <p class="recipe-about"><%= recipe.about.truncate(213)  %></p>
+    <div class="recipe_item">
+        <p class="recipe_title"><%= link_to  recipe.title , recipe_path(recipe) %></p>
+        <p class="recipe_about"><%= recipe.about.truncate(213)  %></p>
         <% if recipe.image.attached? %>
           <%= link_to recipe_path(recipe) do %>
-            <%= image_tag(recipe.display_image(250,200), class: "rounded")%>
+            <%= image_tag(recipe.display_image(250,200), class: "recipe_img")%>
           <% end %>
         <% else %>
         <!--<img src="/assets/no-image.jpg" alt="no-image" width="250" height="200" class="rounded">-->
-         <%= image_tag 'no-image.jpg', :size => '250x200', :alt => 'no-image'  %>
+         <%= image_tag 'no-image.jpg', :size => '250x200',:class=> 'recipe_img', :alt => 'no-image'  %>
         <% end %>
         <!-- <%= link_to image_tag("favicon.png", alt: "logo", width: "40px"),root_path, class: "logo"  if recipe.image.attached? %> -->
-        <p class="timestamp">Posted <%= time_ago_in_words(recipe.created_at) %> ago.</p>
+        <p class="recipe_timestamp">Posted <%= time_ago_in_words(recipe.created_at) %> ago.</p>
         <p class="user"><%= link_to recipe.user.name, recipe.user %></p>
 
           <div class="like_div">

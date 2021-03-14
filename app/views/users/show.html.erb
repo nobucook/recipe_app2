@@ -19,26 +19,3 @@
     </div>
     <%= will_paginate @recipes %>
 </div>
-
-
-
-
-
-<!--    <section class="user_info">
-      <h1>
-        <%= @user.name %>
-        <% if @user.recipes.any? %>
-        's Recipes (<%= @user.recipes.count %>)
-        <% end %>
-      </h1>
-    </section>
-   <% if @user.recipes.any? %>
-          <div class="recipe-content wrapper">
-          <p><%= link_to "Recent",   user_path(@user, option: "recent") %> |
-          <%= link_to "Popular",  user_path(@user, option: "popular") %></p>
-         <div class="wrapper grid">
-           <%= render @recipes %>
-         </div>
-         <%= will_paginate @recipes %>
-        <% end %>
-      </div>-->

@@ -1,5 +1,30 @@
 <% provide(:title, @user.name) %>
-    <section class="user_info">
+
+<div class="recipe-index__content">
+  <h2 class="recipe-index__title">
+    <%= @user.name %>
+      <% if @user.recipes.any? %>
+        's Recipes (<%= @user.recipes.count %>)
+      <% end %>
+  </h2>
+     <% if @category.nil? %>
+      <p class="d-inline-block"><%= link_to "Latest",   recipes_path(option: "recent") %> | <%= link_to "Popular",   recipes_path(option: "popular")%></p>
+    <% else%>
+      <p class="d-inline-block"><%= link_to "Latest(#{@category.name})",   recipe_category_path(id: @category.id, option: "recent") %></p>
+      <p class="d-inline-block">     |     </p>
+      <p class="d-inline-block"><%= link_to "Popular(#{@category.name})",   recipe_category_path(id: @category.id, option: "popular") %></p>
+    <% end %>
+    <div class="grid">
+        <%= render @recipes %>
+    </div>
+    <%= will_paginate @recipes %>
+</div>
+
+
+
+
+
+<!--    <section class="user_info">
       <h1>
         <%= @user.name %>
         <% if @user.recipes.any? %>
@@ -9,11 +34,11 @@
     </section>
    <% if @user.recipes.any? %>
           <div class="recipe-content wrapper">
-          <p><%= link_to "Recent",   user_path(@user, option: "recent") %> | 
+          <p><%= link_to "Recent",   user_path(@user, option: "recent") %> |
           <%= link_to "Popular",  user_path(@user, option: "popular") %></p>
          <div class="wrapper grid">
            <%= render @recipes %>
          </div>
          <%= will_paginate @recipes %>
         <% end %>
-      </div>
+      </div>-->

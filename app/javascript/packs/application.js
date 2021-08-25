@@ -9,6 +9,10 @@ require("@rails/activestorage").start();
 require("channels");
 require("jquery");
 import "bootstrap";
+import "../stylesheets/application";
+//= require jquery3
+//= require popper
+//= require bootstrap
 
 // app/javascript/packs/application.js
 require("./nested-forms/addFields");

@@ -15,7 +15,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'cocoon'
 gem "nested_form"
-gem 'puma',       '4.3.5'
+gem 'puma',       '4.3.11'
 gem 'sass-rails', '5.1.0'
 gem 'webpacker',  '4.0.7'
 gem 'turbolinks', '5.2.0'
